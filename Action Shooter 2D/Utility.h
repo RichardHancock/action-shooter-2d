@@ -49,9 +49,9 @@ namespace Utility
 	*/
 	enum LogType
 	{
-		E, //< Error
-		W, //< Warning
-		I  //< Info
+		E, ///< Error
+		W, ///< Warning
+		I  ///< Info
 	};
 
 	/**
