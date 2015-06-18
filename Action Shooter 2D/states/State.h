@@ -3,10 +3,8 @@
 #include "../Platform.h"
 
 #pragma once
-class StateManager;
 
-//Self Reference: This code was used in a previous assignment with minor changes.
-//Reference: Pete Allen's Game State Example
+class StateManager;
 
 /**
 @class State
@@ -27,14 +25,17 @@ public:
 	virtual ~State() {}
 
 	/**
-	@brief Handles any events such as keyboard/mouse input
-	*/
+	@brief Handles any events such as keyboard/mouse input.
+	
+	@return true to exit, false to continue.
+	 */
 	virtual bool eventHandler() = 0;
 
 	/**
-	@brief Update any internal values
-	@param float - delta time
-	*/
+	@brief Update any internal values.
+	
+	@param dt - delta time.
+	 */
 	virtual void update(float dt) = 0;
 
 	/**

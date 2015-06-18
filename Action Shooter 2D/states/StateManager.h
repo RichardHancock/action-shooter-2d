@@ -4,9 +4,6 @@
 
 #pragma once
 
-//Self Reference: This code was used in a previous assignment.
-//Reference: Pete Allen's Game State Example
-
 /**
 @class StateManager
 @brief Manages the creation, switching and function forwarding for States
@@ -14,19 +11,22 @@
 class StateManager
 {
 public:
+
 	/**
-	@brief Create the State Manager
-	@param int - Window Width
-	@param int - Window Height
-	*/
+	@brief Create the State Manager.
+	
+	@param windowWidth  - Window Width.
+	@param windowHeight - Window Height.
+	 */
 	StateManager(int windowWidth, int windowHeight);
 
 	~StateManager();
 
 	/**
-	@brief Add a state on top of the previous state
-	@param State* - The new state
-	*/
+	@brief Add a state on top of the previous state.
+	
+	@param [in,out] state - The new state.
+	 */
 	void addState(State* state);
 
 	/**
@@ -35,9 +35,10 @@ public:
 	void prepareToChangeState();
 
 	/**
-	@brief Change to a new state while deleting all previous states
-	@param State* - The new State
-	*/
+	@brief Change to a new state while deleting all previous states.
+	
+	@param [in,out] state - The new State.
+	 */
 	void changeState(State* state);
 
 	/**
@@ -47,16 +48,21 @@ public:
 
 	//Pass through functions that call the states internal functions
 
-	///Calls the event handler in the current state
+	/**
+	@brief Calls the event handler in the current state.
+	
+	@return true to exit, false to continue.
+	 */
 	bool eventHandler();
 
 	/**
-	@brief Calls the update in the current state
-	@param float - delta time
-	*/
+	@brief Calls the update in the current state.
+	
+	@param dt - delta time.
+	 */
 	void update(float dt);
 
-	///Calls the render for all loaded states
+	/** @brief Calls the render for all loaded states. */
 	void render();
 
 	//Think these are fine to have public since they are const

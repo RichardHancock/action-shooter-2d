@@ -28,10 +28,11 @@ public:
 	}
 
 	/**
-	@brief Create a Vec2
-	@param float - x value
-	@param float - y value
-	*/
+	@brief Create a Vec2.
+	
+	@param initX - x value.
+	@param initY - y value.
+	 */
 	Vec2(float initX, float initY)
 	{
 		x = initX;
@@ -39,9 +40,10 @@ public:
 	}
 
 	/**
-	@brief Create a Vec2
-	@param float - X and Y value
-	*/
+	@brief Create a Vec2.
+	
+	@param XY - X and Y value.
+	 */
 	Vec2(float XY)
 	{
 		x = XY;
