@@ -22,6 +22,12 @@
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{6f2f1dde-c171-4960-9ed1-53be819aad62}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Map Data">
+      <UniqueIdentifier>{62c1da20-06bc-4ed7-a52d-daed8a587278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Map Data">
+      <UniqueIdentifier>{9840511e-3d1b-4783-b881-7d4b8c9e165f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,6 +47,12 @@
     </ClCompile>
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Source Files\Map Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="GameState.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Header Files\Map Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

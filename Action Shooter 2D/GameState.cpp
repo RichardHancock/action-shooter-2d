@@ -18,7 +18,6 @@ bool GameState::eventHandler()
 void GameState::update(float dt)
 {
 
-	
 }
 
 void GameState::render()
