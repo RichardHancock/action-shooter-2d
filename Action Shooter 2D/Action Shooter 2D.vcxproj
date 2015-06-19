@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="states\State.cpp" />
@@ -89,6 +90,7 @@
     <ClInclude Include="dependencies\SDL_image.h" />
     <ClInclude Include="dependencies\SDL_mixer.h" />
     <ClInclude Include="dependencies\SDL_ttf.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="states\State.h" />
     <ClInclude Include="states\StateManager.h" />
