@@ -1,4 +1,3 @@
-#include "../dependencies/SDL.h"
 #include <string>
 #include "../Platform.h"
 
@@ -43,17 +42,44 @@ public:
 	*/
 	virtual void render() = 0;
 
+	/** @brief Starts loading the state. */
+	void startLoading();
+
+	/** @brief Starts unloading the state. */
+	void startUnloading();
+
 	/**
 	@brief Get this states name
 	@return std::string - Name
 	*/
 	std::string getStateName() { return stateName; }
+
+	/**
+	@brief Query if this State is active.
+	
+	@return true if active, false if not.
+	 */
+	bool isActive() { return active; }
+
 protected:
 	///Pointer to state manager
 	StateManager* stateManager;
 
 	/// Platform class containing Window/Renderer and other OS dependent data
 	Platform* platform;
+
+	/** @brief Is this state currently active */
+	bool active;
+
+	/**
+	@brief Loads this State.
+	*/
+	virtual void load() = 0;
+
+	/**
+	@brief Unloads this State.
+	*/
+	virtual void unload() = 0;
 
 	///This states name
 	std::string stateName;

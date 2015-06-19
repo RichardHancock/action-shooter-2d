@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	SDL_Renderer* renderer = platform->getRenderer();
 	SDL_Window* window = platform->getWindow();
 
-	StateManager* manager = new StateManager((int)platform->getWindowSize().x, (int)platform->getWindowSize().y);
+	StateManager* manager = new StateManager();
 
 	unsigned int lastTime = SDL_GetTicks();
 

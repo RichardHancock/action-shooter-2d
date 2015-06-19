@@ -2,8 +2,7 @@
 #include "State.h"
 #include "../Utility.h"
 
-StateManager::StateManager(int windowWidth, int windowHeight)
-	: WINDOW_WIDTH(windowWidth), WINDOW_HEIGHT(windowHeight)
+StateManager::StateManager()
 {
 
 }
@@ -17,6 +16,7 @@ void StateManager::clearStates()
 {
 	for (auto s : states)
 	{
+		s->startUnloading();
 		delete s;
 	}
 	states.clear();
@@ -26,13 +26,14 @@ void StateManager::addState(State* state)
 {
 	states.push_back(state);
 	Utility::log(Utility::I, "StateManager: Switched to the " + state->getStateName());
+	state->startLoading();
+	
 }
 
 void StateManager::prepareToChangeState()
 {
 	//Stop Music and Clear the timers
 	Utility::Timer::cleanup();
-	Mix_HaltMusic();
 }
 
 void StateManager::changeState(State* state)
@@ -43,24 +44,34 @@ void StateManager::changeState(State* state)
 
 void StateManager::popLastState()
 {
+	states.back()->startUnloading();
 	delete states.back();
 	states.pop_back();
 }
 
 bool StateManager::eventHandler()
 {
-	return states.back()->eventHandler();
+	if (!states.empty() && states.back() != nullptr && states.back()->isActive())
+	{
+		return states.back()->eventHandler();
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void StateManager::update(float dt)
 {
-	states.back()->update(dt);
+	if (!states.empty() && states.back() != nullptr && states.back()->isActive())
+		states.back()->update(dt);
 }
 
 void StateManager::render()
 {
 	for (int i = 0; i < (int)states.size(); i++)
 	{
-		states[i]->render();
+		if (states[i] != nullptr && states[i]->isActive())
+			states[i]->render();
 	}
 }
