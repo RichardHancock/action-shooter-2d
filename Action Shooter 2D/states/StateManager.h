@@ -1,6 +1,5 @@
 #include "State.h"
 #include <vector>
-#include "../dependencies/SDL.h"
 
 #pragma once
 
@@ -14,11 +13,8 @@ public:
 
 	/**
 	@brief Create the State Manager.
-	
-	@param windowWidth  - Window Width.
-	@param windowHeight - Window Height.
 	 */
-	StateManager(int windowWidth, int windowHeight);
+	StateManager();
 
 	~StateManager();
 
@@ -26,7 +22,7 @@ public:
 	@brief Add a state on top of the previous state.
 	
 	@param [in,out] state - The new state.
-	 */
+	*/
 	void addState(State* state);
 
 	/**
@@ -38,7 +34,7 @@ public:
 	@brief Change to a new state while deleting all previous states.
 	
 	@param [in,out] state - The new State.
-	 */
+	*/
 	void changeState(State* state);
 
 	/**
@@ -52,25 +48,18 @@ public:
 	@brief Calls the event handler in the current state.
 	
 	@return true to exit, false to continue.
-	 */
+	*/
 	bool eventHandler();
 
 	/**
 	@brief Calls the update in the current state.
 	
 	@param dt - delta time.
-	 */
+	*/
 	void update(float dt);
 
 	/** @brief Calls the render for all loaded states. */
 	void render();
-
-	//Think these are fine to have public since they are const
-	///The Window's Width
-	const int WINDOW_WIDTH;
-
-	///The Window's Height
-	const int WINDOW_HEIGHT;
 
 private:
 	/**
