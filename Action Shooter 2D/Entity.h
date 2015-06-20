@@ -8,9 +8,9 @@ public:
 	/**
 	@brief Create the Entity.
 
-	@param p - Vec2 position
+	@param pos - Vec2 position
 	*/
-	Entity(Vec2 p);
+	Entity(Vec2 pos);
 	/**
 	@brief Create the Entity.
 

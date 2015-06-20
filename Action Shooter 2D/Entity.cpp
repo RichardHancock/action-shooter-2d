@@ -1,8 +1,9 @@
 #include "Entity.h"
 
-Entity::Entity(Vec2 p)
+Entity::Entity(Vec2 pos)
+	: pos(pos)
 {
-	pos = p;
+	//pos = p;
 	dimen = Vec2(0, 0);
 }
 

@@ -85,6 +85,7 @@
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="states\State.cpp" />
     <ClCompile Include="states\StateManager.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
@@ -99,6 +100,7 @@
     <ClInclude Include="Platform.h" />
     <ClInclude Include="states\State.h" />
     <ClInclude Include="states\StateManager.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Vec2.h" />
