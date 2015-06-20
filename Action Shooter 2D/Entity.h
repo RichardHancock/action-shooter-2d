@@ -30,6 +30,8 @@ public:
 
 	/**
 	@brief Get the entity's position
+
+	@return Entity's position
 	*/
 	Vec2 getPosition();
 
@@ -42,6 +44,8 @@ public:
 
 	/**
 	@brief Get the entity's dimensions
+
+	@return Entity's dimensions
 	*/
 	Vec2 getDimensions();
 

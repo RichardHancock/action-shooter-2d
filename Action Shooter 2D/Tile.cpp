@@ -1,9 +1,9 @@
 #include "Tile.h"
 
-Tile::Tile(Vec2 p, Vec2 tv, int ID) : Entity(p)
+Tile::Tile(Vec2 p, Vec2 colRow, int tID) : Entity(p)
 {
-	this->tv = tv;
-	this->ID = ID;
+	tv = colRow;
+	ID = tID;
 }
 
 Tile::~Tile()
@@ -11,3 +11,12 @@ Tile::~Tile()
 
 }
 
+void Tile::update(float dt)
+{
+
+}
+
+void Tile::render()
+{
+
+}

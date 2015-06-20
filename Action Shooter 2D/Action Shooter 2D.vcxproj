@@ -81,6 +81,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="states\State.cpp" />
     <ClCompile Include="states\StateManager.cpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="dependencies\SDL_ttf.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="states\State.h" />
     <ClInclude Include="states\StateManager.h" />
