@@ -38,6 +38,18 @@ public:
 		x = initX;
 		y = initY;
 	}
+	
+	/**
+	@brief Create a Vec2.
+
+	@param initX - x value.
+	@param initY - y value.
+	*/
+	Vec2(int initX, int initY)
+	{
+		x = (float)initX;
+		y = (float)initY;
+	}
 
 	/**
 	@brief Create a Vec2.
@@ -48,6 +60,17 @@ public:
 	{
 		x = XY;
 		y = XY;
+	}
+
+	/**
+	@brief Create a Vec2.
+
+	@param XY - X and Y value.
+	*/
+	Vec2(int XY)
+	{
+		x = (float)XY;
+		y = (float)XY;
 	}
 
 	/**
