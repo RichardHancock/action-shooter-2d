@@ -1,6 +1,7 @@
 #pragma once
 
 #include "states/State.h"
+#include "TileTypeManager.h"
 #include "Platform.h"
 
 /**

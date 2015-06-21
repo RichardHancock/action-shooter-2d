@@ -1,7 +1,18 @@
-2 //Number of Tile Types
-O res/img/objects.png 32 32 //Type ID, The image file location, Tile sprite width, Tile sprite height
-B res/img/backgroundTiles.png
-O W0 T 0 0 //Wall //Key: Type (B = Background Tile, O = Object Tile), Tile ID (2 Digits), Collidable ((T)True or (F)False), Sprite X Index, Sprite Y Index
-O D0 T 1 0 //Door
-B G0 F 0 0 //Grass
-B R0 F 1 0 //Rock
+2
+O res/img/objects.png 32 32
+B res/img/backgroundTiles.png 32 32
+4
+O W0 T F 0 0
+O D0 T T 1 0
+B G0 F F 0 0
+B R0 F F 1 0
+
+//Comments:
+//Number of Tile Groups
+//Type ID, The image file location, Tile sprite width, Tile sprite height
+//Number of Tile Types
+//Key: Type (B = Background Tile, O = Object Tile), Tile ID (2 Digits), Collidable ((T)True or (F)False), Destructible ((T)True or (F)False), Sprite X Index, Sprite Y Index
+//Wall
+//Door
+//Grass
+//Rock

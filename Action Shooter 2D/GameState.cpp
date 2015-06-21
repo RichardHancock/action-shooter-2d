@@ -6,6 +6,9 @@ GameState::GameState(StateManager* manager, Platform *platform) : State(manager,
 	stateName = "GameState";
 
 	Map *m = new Map(Vec2(0, 0), Vec2(10, 10));
+
+	//TMP FOR TESTING
+	TileTypeManager* tmp = new TileTypeManager("res/txt/tiles.txt", platform->getRenderer());
 }
 
 GameState::~GameState()
