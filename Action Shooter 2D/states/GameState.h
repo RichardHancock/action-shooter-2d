@@ -1,12 +1,12 @@
 #pragma once
 
-#include "states/State.h"
-#include "TileTypeManager.h"
-#include "Platform.h"
+#include "State.h"
+#include "../levelManagement/TileTypeManager.h"
+#include "../Platform.h"
 
 /**
-@class State
-@brief A game state that contains one screen of the game such as a Menu or the game itself
+@class GameState
+@brief A game state that contains the game itself
 */
 class GameState : public State
 {
@@ -20,7 +20,8 @@ public:
 	*/
 
 	GameState(StateManager* manager, Platform *platform);
-	~GameState();
+	
+	virtual ~GameState();
 
 	/**
 	@brief Handles any events such as keyboard/mouse input.
@@ -42,12 +43,14 @@ public:
 	void render();
 
 protected:
-	///Pointer to state manager
-	StateManager* stateManager;
 
-	/// Platform class containing Window/Renderer and other OS dependent data
-	Platform* platform;
+	/**
+	@brief Loads this State.
+	*/
+	virtual void load();
 
-	///This states name
-	std::string stateName;
+	/**
+	@brief Unloads this State.
+	*/
+	virtual void unload();
 };

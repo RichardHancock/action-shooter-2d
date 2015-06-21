@@ -1,4 +1,4 @@
-#include "Entity.h"
+#include "../entities/Entity.h"
 #include "Tile.h"
 #include <Vector>
 
@@ -8,8 +8,8 @@ public:
 	/**
 	@brief Creates the map for the level
 
-	@param Vec2 p - The position of the map
-	@param Vec2 d - The dimensions of the map in tiles
+	@param p - The position of the map
+	@param d - The dimensions of the map in tiles
 	*/
 	Map(Vec2 p, Vec2 d);
 	~Map();

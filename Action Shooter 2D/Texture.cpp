@@ -1,6 +1,5 @@
 #include "Texture.h"
-
-/**************************************************************************************************************/
+#include "Utility.h"
 
 /*Constructs the texture*/
 Texture::Texture(SDL_Renderer* renderer, int r, int g, int b)
@@ -21,8 +20,6 @@ Texture::Texture(SDL_Renderer* renderer, int r, int g, int b)
 	SDL_FreeSurface(surface);
 }
 
-/**************************************************************************************************************/
-
 /*Constructs the texture using SDL image*/
 Texture::Texture(std::string fileLocation, SDL_Renderer* renderer)
 {
@@ -34,10 +31,7 @@ Texture::Texture(std::string fileLocation, SDL_Renderer* renderer)
 	{
 		/*initialise the message*/
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
-		/*if not print out what failed to load and the error*/
-		SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, message.c_str());
-		SDL_Delay(10000);
-		SDL_Quit();
+		Utility::log(Utility::E, message);
 	}
 
 	/*Converts the surface into texture data*/
@@ -50,8 +44,6 @@ Texture::Texture(std::string fileLocation, SDL_Renderer* renderer)
 	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
 }
 
-/**************************************************************************************************************/
-
 /*Constructs the texture using a bmp image*/
 Texture::Texture(std::string fileLocation, SDL_Renderer* renderer, bool magentaAlpha)
 {
@@ -62,10 +54,7 @@ Texture::Texture(std::string fileLocation, SDL_Renderer* renderer, bool magentaA
 	{
 		/*initialise the message*/
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
-		/*if not print out what failed to load and the error*/
-		SDL_LogMessage(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_ERROR, message.c_str());
-		SDL_Delay(10000);
-		SDL_Quit();
+		Utility::log(Utility::E, message);
 	}
 	/*Check if the images magenta is to be used as the alpha*/
 	if (magentaAlpha)
@@ -84,16 +73,12 @@ Texture::Texture(std::string fileLocation, SDL_Renderer* renderer, bool magentaA
 	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
 }
 
-/**************************************************************************************************************/
-
 /*Destructs the Texture*/
 Texture::~Texture()
 {
 	/*deletes the texture from memory*/
 	SDL_DestroyTexture(textureData);
 }
-
-/**************************************************************************************************************/
 
 /*Getter # Texture*/
 SDL_Texture* Texture::getTexture()
@@ -102,8 +87,6 @@ SDL_Texture* Texture::getTexture()
 	return textureData;
 }
 
-/**************************************************************************************************************/
-
 /*Getter # Width*/
 int Texture::getWidth()
 {
@@ -111,16 +94,12 @@ int Texture::getWidth()
 	return textureWidth;
 }
 
-/**************************************************************************************************************/
-
 /*Getter # Height*/
 int Texture::getHeight()
 {
 	/*returns the textureHeight*/
 	return textureHeight;
 }
-
-/**************************************************************************************************************/
 
 /*Pushes the texture to the Renderer*/
 void Texture::pushToScreen(SDL_Renderer* renderer, int x, int y)
@@ -137,8 +116,6 @@ void Texture::pushToScreen(SDL_Renderer* renderer, int x, int y)
 
 }
 
-/**************************************************************************************************************/
-
 /*Pushes the scaled texture to the Renderer*/
 void Texture::pushToScreen(SDL_Renderer* renderer, int x, int y, int width, int height)
 {
@@ -153,8 +130,6 @@ void Texture::pushToScreen(SDL_Renderer* renderer, int x, int y, int width, int 
 	SDL_RenderCopy(renderer, textureData, NULL, &destRect);
 
 }
-
-/**************************************************************************************************************/
 
 /*Pushes part of the texture to the Renderer*/
 void Texture::pushSpriteToScreen(SDL_Renderer* renderer, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight)
@@ -177,8 +152,6 @@ void Texture::pushSpriteToScreen(SDL_Renderer* renderer, int x, int y, int srcX,
 	SDL_RenderCopy(renderer, textureData, &srcRect, &destRect);
 
 }
-
-/**************************************************************************************************************/
 
 /*Pushes a scaled part of the texture to the Renderer*/
 void Texture::pushSpriteToScreen(SDL_Renderer* renderer, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight, int width, int height)

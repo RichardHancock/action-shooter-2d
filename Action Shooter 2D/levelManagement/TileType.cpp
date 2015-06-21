@@ -19,6 +19,7 @@ void TileType::render(SDL_Renderer* renderer, Vec2 pos, Vec2 dimensions)
 {
 	int srcX = (int)(spriteIndexPositions.x * spriteDimensions.x);
 	int srcY = (int)(spriteIndexPositions.y * spriteDimensions.y);
+
 	spritesheet->pushSpriteToScreen(renderer, (int)pos.x, (int)pos.y, srcX, srcY,
 		(int)spriteDimensions.x, (int)spriteDimensions.y, (int)dimensions.x, (int)dimensions.y);
 }

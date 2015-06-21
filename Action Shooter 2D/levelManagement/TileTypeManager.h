@@ -1,8 +1,8 @@
 #pragma once
 
 #include "TileType.h"
-#include "Texture.h"
-#include "Vec2.h"
+#include "../Texture.h"
+#include "../Vec2.h"
 #include <unordered_map>
 #include <vector>
 #include <fstream>
@@ -13,7 +13,7 @@ class TileTypeManager
 public:
 	/**
 	@brief TileTypeManager constructor.
-	@param std::string filePath The file path of the tiles data.
+	@param filePath The file path of the tiles data.
 	@param renderer A pointer to the renderer.
 	*/
 	TileTypeManager(std::string filePath, SDL_Renderer* renderer);
@@ -37,7 +37,7 @@ private:
 
 	/**
 	@brief Loads the tile data from the file.
-	@param std::string filePath The file path of the tiles data.
+	@param filePath The file path of the tiles data.
 	@param renderer A pointer to the renderer.
 	*/
 	void loadTileData(std::string filePath, SDL_Renderer* renderer);

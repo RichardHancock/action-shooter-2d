@@ -76,7 +76,7 @@ bool Platform::initSDL()
 	
 	#else
 	
-		window = SDL_CreateWindow("MGP Assignment 2 by Richard Hancock",
+		window = SDL_CreateWindow("2D Action Shooter",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 		640, 480,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);

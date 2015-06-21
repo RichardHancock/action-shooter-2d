@@ -12,11 +12,11 @@ Creates a Texture from an image file, this can then be used with a renderer.
 class Texture
 {
 private:
-	/**The Texture data.*/
+	///The Texture data
 	SDL_Texture* textureData;
-	/**The width of the Texture.*/
+	///The width of the Texture.
 	int textureWidth;
-	/**The height of the Texture.*/
+	///The height of the Texture.
 	int textureHeight;
 
 public:
@@ -97,8 +97,8 @@ public:
 	@param y The y coordinate of the image.
 	@param srcX The x coordinate of the source image.
 	@param srcY The y coordinate of the source image.
-	@param width The width of the source image.
-	@param height The height of the source image.
+	@param srcWidth The width of the source image.
+	@param srcHeight The height of the source image.
 	*/
 	void pushSpriteToScreen(SDL_Renderer* renderer, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight);
 

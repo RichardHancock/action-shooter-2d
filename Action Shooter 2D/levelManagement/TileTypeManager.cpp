@@ -1,4 +1,5 @@
 #include "TileTypeManager.h"
+#include "../Utility.h"
 
 TileTypeManager::TileTypeManager(std::string filePath, SDL_Renderer* renderer)
 {
@@ -13,7 +14,7 @@ TileTypeManager::~TileTypeManager()
 void TileTypeManager::loadTileData(std::string filePath, SDL_Renderer* renderer)
 {
 	//File loading message
-	std::cout << "Loading tile data." << std::endl;
+	Utility::log(Utility::I, "Loading tile data.");
 
 	//Open the file using a ifstream
 	std::ifstream file(filePath);
@@ -41,7 +42,7 @@ void TileTypeManager::loadTileData(std::string filePath, SDL_Renderer* renderer)
 			//store the data
 			spritesheets[group.c_str()[0]] = new Texture(filePath, renderer);
 			spriteDimensions[group.c_str()[0]] = Vec2(std::stoi(xDimension), std::stoi(yDimension));
-			tiles[group.c_str()[0]];
+			//Irelivant tiles[group.c_str()[0]];
 		}
 
 		//Load the number of tile types.
@@ -77,11 +78,11 @@ void TileTypeManager::loadTileData(std::string filePath, SDL_Renderer* renderer)
 		file.close();
 
 		//File loaded message
-		std::cout << "Tile data loaded." << std::endl << std::endl;
+		Utility::log(Utility::I, "Tile data loaded.");
 	}
 	else
 	{
 		//Error message
-		std::cout << "Unable to open file : " + filePath;
+		Utility::log(Utility::E, "Unable to open file : " + filePath);
 	}
 }

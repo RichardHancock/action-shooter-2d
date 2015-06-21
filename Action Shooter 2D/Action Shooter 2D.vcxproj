@@ -78,17 +78,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="entities\Entity.cpp" />
+    <ClCompile Include="levelManagement\Map.cpp" />
+    <ClCompile Include="levelManagement\Tile.cpp" />
+    <ClCompile Include="levelManagement\TileType.cpp" />
+    <ClCompile Include="levelManagement\TileTypeManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="states\GameState.cpp" />
     <ClCompile Include="states\State.cpp" />
     <ClCompile Include="states\StateManager.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="TileType.cpp" />
-    <ClCompile Include="TileTypeManager.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -96,16 +96,16 @@
     <ClInclude Include="dependencies\SDL_image.h" />
     <ClInclude Include="dependencies\SDL_mixer.h" />
     <ClInclude Include="dependencies\SDL_ttf.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="GameState.h" />
-    <ClInclude Include="Map.h" />
+    <ClInclude Include="entities\Entity.h" />
+    <ClInclude Include="levelManagement\Map.h" />
+    <ClInclude Include="levelManagement\Tile.h" />
+    <ClInclude Include="levelManagement\TileType.h" />
+    <ClInclude Include="levelManagement\TileTypeManager.h" />
     <ClInclude Include="Platform.h" />
+    <ClInclude Include="states\GameState.h" />
     <ClInclude Include="states\State.h" />
     <ClInclude Include="states\StateManager.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="TileType.h" />
-    <ClInclude Include="TileTypeManager.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Vec2.h" />
   </ItemGroup>

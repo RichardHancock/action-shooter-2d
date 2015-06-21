@@ -4,7 +4,7 @@
 #include "Utility.h"
 #include "states/StateManager.h"
 
-#include "GameState.h"
+#include "states/GameState.h"
 
 int main(int argc, char *argv[]);
 
