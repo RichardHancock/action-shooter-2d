@@ -4,6 +4,8 @@
 #include "Utility.h"
 #include "states/StateManager.h"
 
+#include "GameState.h"
+
 int main(int argc, char *argv[]);
 
 int main(int argc, char *argv[])
@@ -25,6 +27,9 @@ int main(int argc, char *argv[])
 	StateManager* manager = new StateManager();
 
 	unsigned int lastTime = SDL_GetTicks();
+
+
+	manager->addState(new GameState(manager, platform));
 
 	bool done = false;
 
