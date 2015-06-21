@@ -3,6 +3,10 @@
 #include "../Texture.h"
 #include "../Vec2.h"
 
+/**
+@brief Creates a TileType Object.
+@author Jamie Slowgrove
+*/
 class TileType
 {
 public:
@@ -32,13 +36,13 @@ public:
 	void render(SDL_Renderer* renderer, Vec2 pos, Vec2 dimensions);
 
 	/**
-	@brief Getter # If the TileType is collidable.
+	@brief Gets if the TileType is collidable.
 	@return If the TileType is collidable.
 	*/
 	bool getCollidable();
 
 	/**
-	@brief Getter # If the TileType is destructible.
+	@brief Gets if the TileType is destructible.
 	@return If the TileType is destructible.
 	*/
 	bool getDestructible();
@@ -52,6 +56,8 @@ private:
 	bool collidable;
 	///A boolean for if the TileType is destructible.
 	bool destructible;
+	///The position of the sprite on the spritesheet.
+	Vec2 spritePosition;
 	///The index position of the sprite on the spritesheet.
 	Vec2 spriteIndexPositions;
 	///The dimensions of the sprite.

@@ -8,6 +8,10 @@
 #include <fstream>
 #include <sstream> 
 
+/**
+@brief Creates a TileTypeManager for dealing with the TileType objects.
+@author Jamie Slowgrove
+*/
 class TileTypeManager
 {
 public:
