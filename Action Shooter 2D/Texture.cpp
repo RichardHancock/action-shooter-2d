@@ -1,176 +1,175 @@
 #include "Texture.h"
 #include "Utility.h"
 
-/*Constructs the texture*/
 Texture::Texture(SDL_Renderer* renderer, int r, int g, int b)
 {
-	/*Declaring the surface*/
+	//Creates the surface
 	SDL_Surface *surface;
-
-	/*Creating the surface*/
 	surface = SDL_CreateRGBSurface(0, 1, 1, 32, 0, 0, 0, 0);
 
-	/*Filling the surface with the color*/
+	//Fills the surface with the color
 	SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, (Uint8)r, (Uint8)g, (Uint8)b));
 	
-	/*Converts the surface into texture data*/
+	//Converts the surface into texture data
 	textureData = SDL_CreateTextureFromSurface(renderer, surface);
 
-	/*delete the surface from memory*/
+	//delete the surface from memory
 	SDL_FreeSurface(surface);
 }
 
-/*Constructs the texture using SDL image*/
-Texture::Texture(std::string fileLocation, SDL_Renderer* renderer)
+Texture::Texture(SDL_Renderer* renderer, SDL_Colour colour)
 {
-	/*Loads the image as a surface*/
-	SDL_Surface* image = IMG_Load(fileLocation.c_str());
+	//Creates the surface
+	SDL_Surface *surface;
+	surface = SDL_CreateRGBSurface(0, 1, 1, 32, 0, 0, 0, 0);
 
-	/*Error Check - If unable to load image then end program*/
-	if (!image)
-	{
-		/*initialise the message*/
-		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
-		Utility::log(Utility::E, message);
-	}
+	//Fills the surface with the color
+	SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, colour.r, colour.g, colour.b));
 
-	/*Converts the surface into texture data*/
-	textureData = SDL_CreateTextureFromSurface(renderer, image);
+	//Converts the surface into texture data
+	textureData = SDL_CreateTextureFromSurface(renderer, surface);
 
-	/*delete the surface from memory*/
-	SDL_FreeSurface(image);
-
-	/*get the size of the texture*/
-	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
+	//delete the surface from memory
+	SDL_FreeSurface(surface);
 }
 
-/*Constructs the texture using a bmp image*/
-Texture::Texture(std::string fileLocation, SDL_Renderer* renderer, bool magentaAlpha)
+Texture::Texture(std::string fileLocation, SDL_Renderer* renderer)
 {
-	/*Loads the image as a surface*/
-	SDL_Surface* image = SDL_LoadBMP(fileLocation.c_str());
-	/*Error Check - If unable to load image then end program*/
+	//Loads the image as a surface
+	SDL_Surface* image = IMG_Load(fileLocation.c_str());
+
+	//Image load check
 	if (!image)
 	{
-		/*initialise the message*/
+		//Error message
 		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
 		Utility::log(Utility::E, message);
+		return;
 	}
-	/*Check if the images magenta is to be used as the alpha*/
+
+	//Converts the surface into texture data
+	textureData = SDL_CreateTextureFromSurface(renderer, image);
+
+	//delete the surface from memory
+	SDL_FreeSurface(image);
+
+	//store the size of the texture
+	int textureWidth, textureHeight;
+	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
+	dimensions = Vec2(textureWidth, textureHeight);
+}
+
+Texture::Texture(std::string fileLocation, SDL_Renderer* renderer, bool magentaAlpha)
+{
+	//Loads the image as a surface
+	SDL_Surface* image = SDL_LoadBMP(fileLocation.c_str());
+
+	//Image load check
+	if (!image)
+	{
+		//Error message
+		std::string message = "Unable to load image from: " + fileLocation + ", Error is: " + IMG_GetError();
+		Utility::log(Utility::E, message);
+		return;
+	}
+
+	//Check if the images magenta is to be used as the alpha
 	if (magentaAlpha)
 	{
-		/*Replaces magenta with alpha*/
+		//Replaces magenta with alpha
 		SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 255, 0, 255));
 	}
 
-	/*Converts the surface into texture data*/
+	//Converts the surface into texture data
 	textureData = SDL_CreateTextureFromSurface(renderer, image);
 
-	/*delete the surface from memory*/
+	//delete the surface from memory
 	SDL_FreeSurface(image);
 
-	/*get the size of the texture*/
+	//store the size of the texture
+	int textureWidth, textureHeight;
 	SDL_QueryTexture(textureData, NULL, NULL, &textureWidth, &textureHeight);
+	dimensions = Vec2(textureWidth, textureHeight);
 }
 
-/*Destructs the Texture*/
 Texture::~Texture()
 {
-	/*deletes the texture from memory*/
+	//deletes the texture from memory
 	SDL_DestroyTexture(textureData);
 }
 
-/*Getter # Texture*/
 SDL_Texture* Texture::getTexture()
 {
-	/*returns the texture data*/
 	return textureData;
 }
 
-/*Getter # Width*/
-int Texture::getWidth()
+Vec2 Texture::getDimensions()
 {
-	/*returns the textureWidth*/
-	return textureWidth;
+	return dimensions;
 }
 
-/*Getter # Height*/
-int Texture::getHeight()
+void Texture::pushToScreen(SDL_Renderer* renderer, Vec2 pos)
 {
-	/*returns the textureHeight*/
-	return textureHeight;
-}
-
-/*Pushes the texture to the Renderer*/
-void Texture::pushToScreen(SDL_Renderer* renderer, int x, int y)
-{
-	/*create the destination rectangle of the texture*/
+	//Create the destination rectangle of the texture
 	SDL_Rect destRect;
-	destRect.x = x; /*destination x coordinate*/
-	destRect.y = y; /*destination y coordinate*/
-	destRect.w = textureWidth; /*destination width (scale along the x axis)*/
-	destRect.h = textureHeight; /*destination height (scale along the y axis)*/
+	destRect.x = (int)pos.x;
+	destRect.y = (int)pos.y;
+	destRect.w = (int)dimensions.x;
+	destRect.h = (int)dimensions.y;
 
-	/*Copy the texture to the renderer at the destination rectangle*/
+	//Copy the texture to the renderer at the destination rectangle
 	SDL_RenderCopy(renderer, textureData, NULL, &destRect);
-
 }
 
-/*Pushes the scaled texture to the Renderer*/
-void Texture::pushToScreen(SDL_Renderer* renderer, int x, int y, int width, int height)
+void Texture::pushToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 scale)
 {
-	/*create the destination rectangle of the texture*/
+	//Create the destination rectangle of the texture
 	SDL_Rect destRect;
-	destRect.x = x; /*destination x coordinate*/
-	destRect.y = y; /*destination y coordinate*/
-	destRect.w = width; /*destination width (scale along the x axis)*/
-	destRect.h = height; /*destination height (scale along the y axis)*/
+	destRect.x = (int)pos.x;
+	destRect.y = (int)pos.y;
+	destRect.w = (int)scale.x;
+	destRect.h = (int)scale.y;
 
-	/*Copy the texture to the renderer at the destination rectangle*/
+	//Copy the texture to the renderer at the destination rectangle
 	SDL_RenderCopy(renderer, textureData, NULL, &destRect);
-
 }
 
-/*Pushes part of the texture to the Renderer*/
-void Texture::pushSpriteToScreen(SDL_Renderer* renderer, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight)
+void Texture::pushSpriteToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 spritePos, Vec2 spriteDimensions)
 {
-	/*create the destination rectangle of the texture*/
+	//Create the destination rectangle of the texture
 	SDL_Rect destRect;
-	destRect.x = x; /*destination x coordinate*/
-	destRect.y = y; /*destination y coordinate*/
-	destRect.w = srcWidth; /*destination width (scale along the x axis)*/
-	destRect.h = srcHeight; /*destination height (scale along the y axis)*/
+	destRect.x = (int)pos.x;
+	destRect.y = (int)pos.y;
+	destRect.w = (int)spriteDimensions.x;
+	destRect.h = (int)spriteDimensions.y;
 
-	/*create the source rectangle of the texture*/
+	//Create the source rectangle of the texture
 	SDL_Rect srcRect;
-	srcRect.x = srcX; /*source x coordinate*/
-	srcRect.y = srcY; /*source y coordinate*/
-	srcRect.w = srcWidth; /*source width*/
-	srcRect.h = srcHeight; /*source height*/
+	srcRect.x = (int)spritePos.x;
+	srcRect.y = (int)spritePos.y;
+	srcRect.w = (int)spriteDimensions.x;
+	srcRect.h = (int)spriteDimensions.y;
 
-	/*Copy the texture to the renderer at the destination rectangle*/
+	//Copy the texture to the renderer at the destination rectangle
 	SDL_RenderCopy(renderer, textureData, &srcRect, &destRect);
-
 }
 
-/*Pushes a scaled part of the texture to the Renderer*/
-void Texture::pushSpriteToScreen(SDL_Renderer* renderer, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight, int width, int height)
+void Texture::pushSpriteToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 scale, Vec2 spritePos, Vec2 spriteDimensions)
 {
-	/*create the destination rectangle of the texture*/
+	//Create the destination rectangle of the texture
 	SDL_Rect destRect;
-	destRect.x = x; /*destination x coordinate*/
-	destRect.y = y; /*destination y coordinate*/
-	destRect.w = width; /*destination width (scale along the x axis)*/
-	destRect.h = height; /*destination height (scale along the y axis)*/
+	destRect.x = (int)pos.x;
+	destRect.y = (int)pos.y;
+	destRect.w = (int)scale.x;
+	destRect.h = (int)scale.y;
 
-	/*create the source rectangle of the texture*/
+	//Create the source rectangle of the texture
 	SDL_Rect srcRect;
-	srcRect.x = srcX; /*source x coordinate*/
-	srcRect.y = srcY; /*source y coordinate*/
-	srcRect.w = srcWidth; /*source width*/
-	srcRect.h = srcHeight; /*source height*/
+	srcRect.x = (int)spritePos.x;
+	srcRect.y = (int)spritePos.y;
+	srcRect.w = (int)spriteDimensions.x;
+	srcRect.h = (int)spriteDimensions.y;
 
-	/*Copy the texture to the renderer at the destination rectangle*/
+	//Copy the texture to the renderer at the destination rectangle
 	SDL_RenderCopy(renderer, textureData, &srcRect, &destRect);
-
 }

@@ -3,26 +3,17 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
+#include "Vec2.h"
 
 /**
 @brief Creates a Texture for use with a renderer.
-Creates a Texture from an image file, this can then be used with a renderer.
 @author Jamie Slowgrove
 */
 class Texture
 {
-private:
-	///The Texture data
-	SDL_Texture* textureData;
-	///The width of the Texture.
-	int textureWidth;
-	///The height of the Texture.
-	int textureHeight;
-
 public:
 	/**
-	Constructs the Texture.
-	Creates a Texture using an RGB value. This will create a 1x1 rectangle of that colour that can be scaled.
+	@brief Constructs the Texture using an RGB value. This will create a 1x1 rectangle of that colour that can be scaled.
 	@param renderer A pointer to the renderer.
 	@param r The red value.
 	@param g The green value.
@@ -31,89 +22,85 @@ public:
 	Texture(SDL_Renderer* renderer, int r, int g, int b);
 
 	/**
-	Constructs the Texture.
-	Creates a Texture using an image location and a renderer. This is for use with SDL image.
+	@brief Constructs the Texture using an RGB value. This will create a 1x1 rectangle of that colour that can be scaled.
+	@param renderer A pointer to the renderer.
+	@param colour The colour value.
+	*/
+	Texture(SDL_Renderer* renderer, SDL_Colour colour);
+
+	/**
+	@brief Constructs the Texture using an image location and a renderer. This is for use with SDL image.
 	@param fileLocation The location of the image file.
-	@param renderer The renderer.
+	@param renderer A pointer to the renderer.
 	*/
 	Texture(std::string fileLocation, SDL_Renderer* renderer);
 
 	/**
-	Constructs the Texture.
-	Creates a Texture using an image location and a renderer. The magenta pixels of this image can
-	represent alpha if needed.
+	@brief Constructs the Texture using an image location and a renderer. The magenta pixels of this image can represent alpha if needed.
 	@param fileLocation The location of the image file.
-	@param renderer The renderer.
+	@param renderer A pointer to the renderer.
 	@param magentaAlpha If true any magenta pixels in the image will be converted to alpha.
 	*/
 	Texture(std::string fileLocation, SDL_Renderer* renderer, bool magentaAlpha);
 
 	/**
-	Destructs the Texture deleting the Texture from memory.
+	@brief Destructs Texture.
 	*/
 	~Texture();
 
 	/**
-	Getter # Returns a pointer to the Texture.
-	@returns A pointer to the Texture data.
+	@brief Gets a pointer to the Texture.
+	@returns A pointer to the Texture.
 	*/
 	SDL_Texture* getTexture();
 
 	/**
-	Getter # Returns textureWidth.
-	@returns The value of textureWidth.
+	@brief Gets the Texture dimensions.
+	@returns The Texture dimensions.
 	*/
-	int getWidth();
+	Vec2 getDimensions();
 
 	/**
-	Getter # Returns textureHeight.
-	@returns The value of textureHeight.
+	@brief Pushes the image to the Renderer at the XY Coordinates.
+	@param renderer A pointer to the renderer.
+	@param pos The position of the image.
 	*/
-	int getHeight();
+	void pushToScreen(SDL_Renderer* renderer, Vec2 pos);
 
 	/**
-	Pushes the image to the Renderer, to the XY Coordinates.
-	@param renderer The renderer.
-	@param x The x coordinate of the image.
-	@param y The y coordinate of the image.
+	@brief Pushes the image to the Renderer at the XY Coordinates. 
+	This is scaled to the dimensions inputed.
+	@param renderer A pointer to the renderer.
+	@param pos The position of the image.
+	@param scale The dimensions of the image.
 	*/
-	void pushToScreen(SDL_Renderer* renderer, int x, int y);
+	void pushToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 scale);
 
 	/**
-	Pushes the image to the Renderer, to the XY Coordinates. This is scaled to the width and height
-	inputed.
-	@param renderer The renderer.
-	@param x The x coordinate of the image.
-	@param y The y coordinate of the image.
-	@param width The width of the scaled image.
-	@param height The height of the scaled image.
+	@brief Pushes the image to the Renderer at the XY Coordinates. 
+	Only displays the source rectangle inputed.
+	@param renderer A pointer to the renderer.
+	@param pos The position of the image.
+	@param spritePos The position of the sprite in the spritesheet.
+	@param spriteDimensions The dimensions of the sprite.
 	*/
-	void pushToScreen(SDL_Renderer* renderer, int x, int y, int width, int height);
+	void pushSpriteToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 spritePos, Vec2 spriteDimensions);
 
 	/**
-	Pushes the image to the Renderer, to the XY Coordinates. Only displays the source rectangle inputed.
-	@param renderer The renderer.
-	@param x The x coordinate of the image.
-	@param y The y coordinate of the image.
-	@param srcX The x coordinate of the source image.
-	@param srcY The y coordinate of the source image.
-	@param srcWidth The width of the source image.
-	@param srcHeight The height of the source image.
-	*/
-	void pushSpriteToScreen(SDL_Renderer* renderer, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight);
-
-	/**
-	Pushes the image to the Renderer, to the XY Coordinates. Only displays the source rectangle inputed.
+	@brief Pushes the image to the Renderer, to the XY Coordinates. 
+	Only displays the source rectangle inputed.
 	This is scaled to the width and height inputed.
-	@param renderer The renderer.
-	@param x The x coordinate of the image.
-	@param y The y coordinate of the image.
-	@param srcX The x coordinate of the source image.
-	@param srcY The y coordinate of the source image.
-	@param srcWidth The width of the source image.
-	@param srcHeight The height of the source image.
-	@param width The width of the scaled image.
-	@param height The height of the scaled image.
+	@param renderer A pointer to the renderer.
+	@param pos The position of the image.
+	@param scale The dimensions of the image.
+	@param spritePos The position of the sprite in the spritesheet.
+	@param spriteDimensions The dimensions of the sprite.
 	*/
-	void pushSpriteToScreen(SDL_Renderer* renderer, int x, int y, int srcX, int srcY, int srcWidth, int srcHeight, int width, int height);
+	void pushSpriteToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 scale, Vec2 spritePos, Vec2 spriteDimensions);
+
+private:
+	///The Texture data
+	SDL_Texture* textureData;
+	///The Texture dimensions.
+	Vec2 dimensions;
 };
