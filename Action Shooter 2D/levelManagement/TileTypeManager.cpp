@@ -23,55 +23,50 @@ void TileTypeManager::loadTileData(std::string filePath, SDL_Renderer* renderer)
 	if (file.is_open())
 	{
 		//Load the number of tile groups.
-		std::string loadedString;
-		file >> loadedString;
-		numOfGroups = std::stoi(loadedString);
+		file >> numOfGroups;
 
 		//loop for the number of tile groups
 		for (int i = 0; i < numOfGroups; i++)
 		{
 			//variables for the loaded string data
-			std::string group, filePath, xDimension, yDimension;
+			char group;
+			std::string filePath;
+			Vec2 dimensions;
 
 			//load in the data
 			file >> group;
 			file >> filePath;
-			file >> xDimension;
-			file >> yDimension;
+			file >> dimensions.x;
+			file >> dimensions.y;
 
 			//store the data
-			spritesheets[group.c_str()[0]] = new Texture(filePath, renderer);
-			spriteDimensions[group.c_str()[0]] = Vec2(std::stoi(xDimension), std::stoi(yDimension));
-			//Irelivant tiles[group.c_str()[0]];
+			spritesheets[group] = new Texture(filePath, renderer);
+			spriteDimensions[group] = dimensions;
 		}
 
 		//Load the number of tile types.
-		file >> loadedString;
-		numOfTypes = std::stoi(loadedString);
+		file >> numOfTypes;
 
 		//loop for the number of tile types
 		for (int i = 0; i < numOfTypes; i++)
 		{
 			//variables for the loaded string data
-			std::string group, iD, collidableString, destructibleString, xIndex, yIndex;
+			char group; 
+			std::string iD;
+			bool collidable, destructible;
+			Vec2 spriteIndex;
 
 			//load in the data
 			file >> group;
 			file >> iD;
-			file >> collidableString;
-			file >> destructibleString;
-			file >> xIndex;
-			file >> yIndex;
+			file >> collidable;
+			file >> destructible;
+			file >> spriteIndex.x;
+			file >> spriteIndex.y;
 
 			//store the data
-			bool collidable, destructible;
-			if (collidableString.c_str()[0] == 'T'){ collidable = true; }
-			else{ collidable = false; }
-			if (destructibleString.c_str()[0] == 'T'){ destructible = true; }
-			else{ destructible = false; }
-			tiles[group.c_str()[0]].push_back(
-				new TileType(spritesheets[group.c_str()[0]], iD, collidable, destructible,
-				Vec2(std::stof(xIndex), std::stof(yIndex)), spriteDimensions[group.c_str()[0]])
+			tiles[group].push_back(
+				new TileType(spritesheets[group], iD, collidable, destructible, spriteIndex, spriteDimensions[group])
 				);
 		}
 		//Close the file

@@ -6,6 +6,7 @@ TileType::TileType(Texture* spritesheet, std::string iD, bool collidable, bool d
 	this->spritesheet = spritesheet;
 	this->iD = iD;
 	this->collidable = collidable;
+	this->destructible = destructible;
 	this->spriteIndexPositions = spriteIndexPositions;
 	this->spriteDimensions = spriteDimensions;
 }
