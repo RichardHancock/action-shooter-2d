@@ -13,21 +13,23 @@ Only one Music class can play at a time, there is no check for this so the outco
 class Music : public Audio
 {
 public:
+
 	/**
-	@brief Create an Music object
-	@param std::string - Path to the music file
-	*/
-	Music(std::string);
+	@brief Create an Music object.
+	
+	@param path Path to the music file.
+	 */
+	Music(std::string path);
 
 	~Music();
 
 	/**
-	@brief Play the stored music
+	@brief Play the stored music.
 	
-	@param unsigned int - milliseconds of fade-in
-	@param int - How many times will this music play (-1 for infinite)
-	*/
-	void play(unsigned int, int);
+	@param ms    milliseconds of fade-in.
+	@param loops How many times will this music play (-1 for infinite)
+	 */
+	void play(unsigned int ms, int loops);
 
 	/**
 	@brief Pause/Resume the current music track
@@ -35,11 +37,11 @@ public:
 	void togglePause();
 
 	/**
-	@brief Stop the stored music
-
-	@param int - milliseconds of fade-out
-	*/
-	void stop(int);
+	@brief Stop the stored music.
+	
+	@param ms milliseconds of fade-out.
+	 */
+	void stop(int ms);
 private:
 	/**
 	@brief Loads a music file and stores it internally

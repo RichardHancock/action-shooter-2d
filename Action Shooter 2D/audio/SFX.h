@@ -13,18 +13,18 @@ class SFX : public Audio
 public:
 	/**
 	@brief Create an Sound Effect object
-	@param std::string - Path to the sound file
+	@param path Path to the sound file
 	*/
-	SFX(std::string);
+	SFX(std::string path);
 	~SFX();
 
 	/**
-	@brief Play the stored Sound Effect
-
-	@param unsigned int - milliseconds of fade-in
-	@param int - How many times will this SFX play (-1 for infinite , 0 to just play once)
-	*/
-	void play(unsigned int, int);
+	@brief Play the stored Sound Effect.
+	
+	@param ms    milliseconds of fade-in.
+	@param loops How many times will this SFX play (-1 for infinite , 0 to just play once)
+	 */
+	void play(unsigned int ms, int loops);
 
 	/**
 	@brief Pause/Resume the Sound Effect
@@ -32,10 +32,11 @@ public:
 	void togglePause();
 
 	/**
-	@brief Stop the stored Sound Effect
-	@param int - milliseconds of fade-out
-	*/
-	void stop(int);
+	@brief Stop the stored Sound Effect.
+	
+	@param ms milliseconds of fade-out.
+	 */
+	void stop(int ms);
 private:
 	/**
 	@brief Loads a Sound Effect file and stores it internally
