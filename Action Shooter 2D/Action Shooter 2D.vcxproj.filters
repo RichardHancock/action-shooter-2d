@@ -34,6 +34,12 @@
     <Filter Include="Header Files\Entities">
       <UniqueIdentifier>{144894b3-9f79-4ec4-b2c6-9096ba661e7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Audio">
+      <UniqueIdentifier>{cb894405-c6c3-4b66-bb48-2dac7a814e6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Audio">
+      <UniqueIdentifier>{a55b474d-0661-46b2-bc2e-28fc9f43c269}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -71,6 +77,15 @@
     </ClCompile>
     <ClCompile Include="states\GameState.cpp">
       <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\Audio.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\Music.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="audio\SFX.cpp">
+      <Filter>Source Files\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +136,15 @@
     </ClInclude>
     <ClInclude Include="states\GameState.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="audio\Audio.h">
+      <Filter>Header Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="audio\Music.h">
+      <Filter>Header Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="audio\SFX.h">
+      <Filter>Header Files\Audio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
