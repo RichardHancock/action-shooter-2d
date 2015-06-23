@@ -60,9 +60,6 @@
     <ClCompile Include="Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="levelManagement\Map.cpp">
-      <Filter>Source Files\Level Management</Filter>
-    </ClCompile>
     <ClCompile Include="levelManagement\Tile.cpp">
       <Filter>Source Files\Level Management</Filter>
     </ClCompile>
@@ -86,6 +83,12 @@
     </ClCompile>
     <ClCompile Include="audio\SFX.cpp">
       <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="levelManagement\Map.cpp">
+      <Filter>Source Files\Level Management</Filter>
+    </ClCompile>
+    <ClCompile Include="levelManagement\MapManager.cpp">
+      <Filter>Source Files\Level Management</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +125,6 @@
     <ClInclude Include="entities\Entity.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="levelManagement\Map.h">
-      <Filter>Header Files\Level Management</Filter>
-    </ClInclude>
     <ClInclude Include="levelManagement\Tile.h">
       <Filter>Header Files\Level Management</Filter>
     </ClInclude>
@@ -136,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="states\GameState.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="levelManagement\Map.h">
+      <Filter>Header Files\Level Management</Filter>
+    </ClInclude>
+    <ClInclude Include="levelManagement\MapManager.h">
+      <Filter>Header Files\Level Management</Filter>
     </ClInclude>
     <ClInclude Include="audio\Audio.h">
       <Filter>Header Files\Audio</Filter>

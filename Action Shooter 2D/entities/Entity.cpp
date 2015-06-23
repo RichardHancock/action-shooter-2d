@@ -32,3 +32,8 @@ Vec2 Entity::getDimensions()
 {
 	return dimen;
 }
+
+void Entity::render(SDL_Renderer *renderer)
+{
+	entityImg->pushSpriteToScreen(renderer, pos.x, pos.y, 0, 0, dimen.x, dimen.y);
+}

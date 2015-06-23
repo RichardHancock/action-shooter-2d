@@ -24,7 +24,7 @@ public:
 	/**
 	@brief Render any sprites relevant to the entity
 	*/
-	void render();
+	void render(SDL_Renderer *renderer);
 
 private:
 

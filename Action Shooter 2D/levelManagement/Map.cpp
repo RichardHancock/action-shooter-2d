@@ -15,7 +15,7 @@ void Map::update(float dt)
 
 }
 
-void Map::render()
+void Map::render(SDL_Renderer *renderer)
 {
 
 }
@@ -31,7 +31,7 @@ void Map::createBlankMap()
 
 		for (int j = 0; j < dimen.y; j++)
 		{
-			Tile *t = new Tile(Vec2(i, j), Vec2(i, j), 0);
+			Tile *t = new Tile(Vec2(i, j), Vec2(i, j), "XX");
 			mapLayerOne[i].push_back(t);
 		}
 	}

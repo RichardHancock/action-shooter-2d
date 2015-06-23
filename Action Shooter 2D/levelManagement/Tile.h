@@ -1,6 +1,8 @@
 #pragma once
 
+#include <string>
 #include "../entities/Entity.h"
+#include "TileType.h"
 
 class Tile : public Entity
 {
@@ -12,7 +14,7 @@ public:
 	@param colRow - The table value in the map
 	@param tID - The ID used to represent the type of tile
 	*/
-	Tile(Vec2 p, Vec2 colRow, int tID);
+	Tile(Vec2 p, Vec2 colRow, std::string tID);
 
 	~Tile();
 
@@ -48,7 +50,10 @@ private:
 	int TS;
 
 	///The ID that represents the type of tile
-	int ID;
+	std::string ID;
+
+	///Reference to tile type
+	TileType *type;
 
 	///The tile table value - row, column
 	Vec2 tv;

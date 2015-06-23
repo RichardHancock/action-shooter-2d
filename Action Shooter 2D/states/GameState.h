@@ -2,6 +2,8 @@
 
 #include "State.h"
 #include "../levelManagement/TileTypeManager.h"
+#include "../levelManagement/MapManager.h"
+#include "../levelManagement/Map.h"
 #include "../Platform.h"
 
 /**

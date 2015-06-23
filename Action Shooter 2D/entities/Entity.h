@@ -1,4 +1,5 @@
 #include "../Vec2.h"
+#include "../Texture.h"
 
 #pragma once
 
@@ -61,7 +62,7 @@ public:
 	/**
 	@brief Render any sprites relevant to the entity
 	*/
-	virtual void render() = 0;
+	virtual void render(SDL_Renderer *renderer);
 
 protected:
 	/// The position of this entity - x, y
@@ -69,5 +70,8 @@ protected:
 
 	/// The dimensions of this entity - width, height
 	Vec2 dimen;
+
+	///Reference to the entity image
+	Texture *entityImg;
 	
 };

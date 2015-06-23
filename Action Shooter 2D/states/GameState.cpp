@@ -1,5 +1,4 @@
 #include "GameState.h"
-#include "../levelManagement/Map.h"
 
 GameState::GameState(StateManager* manager, Platform *platform)
 	: State(manager, platform)
@@ -29,10 +28,12 @@ void GameState::render()
 
 void GameState::load()
 {
-	Map *m = new Map(Vec2(0, 0), Vec2(10, 10));
+	//Map *m = new Map(Vec2(0, 0), Vec2(10, 10));
 
 	//TMP FOR TESTING
 	TileTypeManager* tmp = new TileTypeManager("res/txt/tiles.txt", platform->getRenderer());
+
+	MapManager *maptmp = new MapManager("res/txt/map1.txt");
 }
 
 void GameState::unload()

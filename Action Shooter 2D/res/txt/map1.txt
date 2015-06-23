@@ -1,6 +1,6 @@
 M01
-15
 20
+15
 3
 B
 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0 R0
@@ -53,8 +53,8 @@ XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX XX
 
 //Comments:
 //Map ID
-//Number of Rows
 //Number of Columns
+//Number of Rows
 //Number of Layers
 //Layer Type (B = Background, O = Object, C = Creature)
 //XX = Blank Tile
