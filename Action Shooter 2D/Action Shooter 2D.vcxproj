@@ -78,6 +78,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="audio\Audio.cpp" />
+    <ClCompile Include="audio\Music.cpp" />
+    <ClCompile Include="audio\SFX.cpp" />
     <ClCompile Include="entities\Entity.cpp" />
     <ClCompile Include="levelManagement\Map.cpp" />
     <ClCompile Include="levelManagement\Tile.cpp" />
@@ -92,6 +95,9 @@
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="audio\Audio.h" />
+    <ClInclude Include="audio\Music.h" />
+    <ClInclude Include="audio\SFX.h" />
     <ClInclude Include="dependencies\SDL.h" />
     <ClInclude Include="dependencies\SDL_image.h" />
     <ClInclude Include="dependencies\SDL_mixer.h" />
