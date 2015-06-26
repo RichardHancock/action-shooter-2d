@@ -37,10 +37,16 @@ public:
 	~Platform();
 
 	/**
-	@brief Initialises the SDL library and its plugins, for the current platform
-	@return bool - Was successful
-	*/
-	bool initSDL();
+	 @brief Initialises the SDL library and its plugins, for the current platform.
+	
+	 @param imageInitFlags SDL_image init flags.
+		On Android only PNG will work
+	 @param mixerInitFlags SDL_mixer init flags.
+		On Android only OGG will work
+	
+	 @return bool - Was successful.
+	 */
+	bool initSDL(int imageInitFlags, int mixerInitFlags);
 
 	/**
 	 @brief Gets the renderer.
@@ -76,4 +82,36 @@ private:
 
 	/** @brief The window's title. */
 	const std::string windowTitle;
+
+	/**
+	 @brief Initialise SDL Window and Renderer on android
+	
+	 @return true if it succeeds, false if it fails.
+	 */
+	bool androidInit();
+
+	/**
+	 @brief Initialises SDL_Image using the passed in flags.
+	
+	 @param initFlags The image formats to initialise.
+	
+	 @return true if it succeeds, false if it fails.
+	 */
+	bool imageInit(int initFlags);
+
+	/**
+	 @brief Initialises SDL_Mixer using the passed in flags.
+	
+	 @param initFlags The mixer formats to initialise.
+	
+	 @return true if it succeeds, false if it fails.
+	 */
+	bool mixerInit(int initFlags);
+
+	/**
+	 @brief Initialises SDL_ttf.
+	
+	 @return true if it succeeds, false if it fails.
+	 */
+	bool ttfInit();
 };

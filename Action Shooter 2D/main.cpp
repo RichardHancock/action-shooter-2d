@@ -12,7 +12,10 @@ int main(int argc, char *argv[])
 {
 	Platform* platform = new Platform("2D Action Shooter");
 	
-	if (!platform->initSDL())
+	int imageFormats = IMG_INIT_JPG | IMG_INIT_PNG;
+	int mixerFormats = MIX_INIT_MP3 | MIX_INIT_OGG;
+
+	if (!platform->initSDL(imageFormats, mixerFormats))
 	{
 		Utility::log(Utility::E, "SDL Failed to initialize");
 		exit(1);
