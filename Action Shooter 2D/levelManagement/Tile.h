@@ -56,6 +56,6 @@ private:
 	TileType *type;
 
 	///The tile table value - row, column
-	Vec2 tv;
+	Vec2 mapIndexPosition;
 
 };

@@ -22,26 +22,26 @@ void TileTypeManager::loadTileData(std::string filePath, SDL_Renderer* renderer)
 	//If the file successfully opens
 	if (file.is_open())
 	{
-		//Load the number of tile groups.
-		file >> numOfGroups;
+		//Load the number of different spritesheets.
+		file >> numOfSpritesheets;
 
-		//loop for the number of tile groups
-		for (int i = 0; i < numOfGroups; i++)
+		//loop for the number of spritesheets
+		for (int i = 0; i < numOfSpritesheets; i++)
 		{
 			//variables for the loaded string data
-			char group;
+			std::string spritesheetID;
 			std::string filePath;
 			Vec2 dimensions;
 
 			//load in the data
-			file >> group;
+			file >> spritesheetID;
 			file >> filePath;
 			file >> dimensions.x;
 			file >> dimensions.y;
 
 			//store the data
-			spritesheets[group] = new Texture(filePath, renderer);
-			spriteDimensions[group] = dimensions;
+			spritesheets[spritesheetID] = new Texture(filePath, renderer);
+			spriteDimensions[spritesheetID] = dimensions;
 		}
 
 		//Load the number of tile types.
@@ -51,13 +51,13 @@ void TileTypeManager::loadTileData(std::string filePath, SDL_Renderer* renderer)
 		for (int i = 0; i < numOfTypes; i++)
 		{
 			//variables for the loaded string data
-			char group; 
+			std::string spritesheetID;
 			std::string iD;
 			bool collidable, destructible;
 			Vec2 spriteIndex;
 
 			//load in the data
-			file >> group;
+			file >> spritesheetID;
 			file >> iD;
 			file >> collidable;
 			file >> destructible;
@@ -65,9 +65,8 @@ void TileTypeManager::loadTileData(std::string filePath, SDL_Renderer* renderer)
 			file >> spriteIndex.y;
 
 			//store the data
-			tiles[group].push_back(
-				new TileType(spritesheets[group], iD, collidable, destructible, spriteIndex, spriteDimensions[group])
-				);
+			tileTypes[iD] = new TileType(spritesheets[spritesheetID], iD, collidable, 
+				destructible, spriteIndex, spriteDimensions[spritesheetID]);
 		}
 		//Close the file
 		file.close();
@@ -80,4 +79,9 @@ void TileTypeManager::loadTileData(std::string filePath, SDL_Renderer* renderer)
 		//Error message
 		Utility::log(Utility::E, "Unable to open file : " + filePath);
 	}
+}
+
+TileType* TileTypeManager::getTileType(std::string tileTypeID)
+{
+	return tileTypes[tileTypeID];
 }
