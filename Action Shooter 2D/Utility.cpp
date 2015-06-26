@@ -64,11 +64,26 @@ void Utility::log(LogType type, std::string message)
 		break;
 
 	default:
-		finalMsg += (" Uncategorised: " + message);
+		finalMsg += (" Uncategorized: " + message);
 		SDL_Log(finalMsg.c_str());
 		break;
 
 	}
+}
+
+void Utility::logI(std::string message)
+{
+	Utility::log(Utility::I, message);
+}
+
+void Utility::logW(std::string message)
+{
+	Utility::log(Utility::W, message);
+}
+
+void Utility::logE(std::string message)
+{
+	Utility::log(Utility::E, message);
 }
 
 std::string Utility::intToString(int num)
