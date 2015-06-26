@@ -10,7 +10,7 @@ int main(int argc, char *argv[]);
 
 int main(int argc, char *argv[])
 {
-	Platform* platform = new Platform();
+	Platform* platform = new Platform("2D Action Shooter");
 	
 	if (!platform->initSDL())
 	{

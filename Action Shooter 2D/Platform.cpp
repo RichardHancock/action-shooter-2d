@@ -2,8 +2,8 @@
 #include "Utility.h"
 #include <string>
 
-Platform::Platform()
-	: scale(Vec2(640, 480))
+Platform::Platform(std::string windowTitle)
+	: windowTitle(windowTitle)
 {
 	
 }
@@ -76,7 +76,7 @@ bool Platform::initSDL()
 	
 	#else
 	
-		window = SDL_CreateWindow("2D Action Shooter",
+		window = SDL_CreateWindow(windowTitle.c_str(),
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 		640, 480,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
@@ -91,14 +91,14 @@ bool Platform::initSDL()
 		}
 	
 	#endif
-
+	
+	//Get Window's dimensions
 	int width;
 	int height;
 
 	SDL_GetWindowSize(window, &width, &height);
 
-	windowSize.x = (float)width;
-	windowSize.y = (float)height;
+	windowSize = Vec2(width, height);
 	
 	Utility::log(Utility::I, "Window Dimensions: " + Utility::intToString(width) +
 		"x" + Utility::intToString(height));

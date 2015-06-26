@@ -24,8 +24,14 @@
 class Platform
 {
 public:
-	/** @brief Default constructor. */
-	Platform();
+	/**
+	 @brief Constructor.
+	
+	 @param windowTitle The window title. Has no effect on mobile platforms.
+	
+	 ### summary @brief Default constructor.
+	 */
+	Platform(std::string windowTitle);
 
 	/** @brief Destructor, Calls SDL's cleanup features for itself and its add ons. */
 	~Platform();
@@ -68,6 +74,6 @@ private:
 	/** @brief Size of the window. */
 	Vec2 windowSize;
 
-	//The resolution everything is scaled from
-	const Vec2 scale;
+	/** @brief The window's title. */
+	const std::string windowTitle;
 };
