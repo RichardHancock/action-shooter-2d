@@ -1,29 +1,27 @@
 #include "ParticleSystem.h"
 
-ParticleSystem::ParticleSystem(Vec2 emitterPos, std::vector<Texture*> textures, int particlesPerCallRate, Vec2 direction
-	, Colour min, Colour max)
-	: emitterPos(emitterPos), textures(textures), particlesPerCallRate(particlesPerCallRate), direction(direction), min(min), max(max)
+ParticleSystem::ParticleSystem(Vec2 emitterPos, Texture* texture, int particlesPerCallRate, 
+	Vec2 direction, SDL_Colour min, SDL_Colour max)
+	: emitterPos(emitterPos), texture(texture), particlesPerCallRate(particlesPerCallRate), direction(direction), min(min), max(max)
 {
 	speed = 1.0f;
+	useDirection = true;
 }
 
-ParticleSystem::ParticleSystem(Vec2 emitterPos, Texture* texture, int particlesPerCallRate, Colour min, Colour max)
-	: emitterPos(emitterPos), particlesPerCallRate(particlesPerCallRate), min(min), max(max)
+ParticleSystem::ParticleSystem(Vec2 emitterPos, Texture* texture, int particlesPerCallRate, 
+	SDL_Colour min, SDL_Colour max)
+	: emitterPos(emitterPos), texture(texture), particlesPerCallRate(particlesPerCallRate), min(min), max(max)
 {
 	speed = 1.0f;
-	textures.push_back(texture);
-	direction.x = (float)NO_DIRECTION;
+	direction = Vec2(0);
+	useDirection = false;
 }
 
 ParticleSystem::~ParticleSystem()
 {
 	particles.clear();
 	
-	for (auto texture : textures)
-	{
-		delete texture;
-	}
-	textures.clear();
+	delete texture;
 }
 
 void ParticleSystem::update(float dt)
@@ -69,15 +67,15 @@ void ParticleSystem::generateNewParticles()
 {
 	for (int i = 0; i < particlesPerCallRate; i++)
 	{
-		Colour colour = { 0, 0, 0 };
+		SDL_Colour colour;
 		colour.r = Utility::randomInt(min.r, max.r);
 		colour.g = Utility::randomInt(min.g, max.g);
 		colour.b = Utility::randomInt(min.b, max.b);
 
-		Particle particle(textures[0], emitterPos, 10, colour, 2);
+		Particle particle(texture, emitterPos, colour, 2);
 		
 		Vec2 randomVelocity;
-		if (direction.x == (float) NO_DIRECTION)
+		if (!useDirection)
 		{
 			randomVelocity.x = Utility::randomFloat(-1.0f, 1.0f);
 			randomVelocity.y = Utility::randomFloat(-1.0f, 1.0f);
@@ -95,17 +93,10 @@ void ParticleSystem::generateNewParticles()
 
 void ParticleSystem::setParticlesPerCallRate(int newRate)
 {
-	if (newRate > 0 && newRate <= MAX_PARTICLES_PER_CALL)
-	{
-		particlesPerCallRate = newRate;
-	}
-
+	particlesPerCallRate = newRate;
 }
 
 void ParticleSystem::setSpeed(float newSpeed)
 {
-	if (newSpeed > 0 && newSpeed <= MAX_SPEED)
-	{
-		speed = newSpeed;
-	}
+	speed = newSpeed;
 }

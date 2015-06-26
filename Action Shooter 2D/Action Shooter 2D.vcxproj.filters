@@ -96,6 +96,9 @@
     <ClCompile Include="audio\SFX.cpp">
       <Filter>Source Files\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="entities\EntityWithMotion.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
     <ClCompile Include="levelManagement\Map.cpp">
       <Filter>Source Files\Level Management</Filter>
     </ClCompile>
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="audio\SFX.h">
       <Filter>Header Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\EntityWithMotion.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

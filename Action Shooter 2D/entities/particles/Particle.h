@@ -1,9 +1,8 @@
-#include "../entities/EntityWithMotion.h"
-#include "../Utility.h"
+#include "../EntityWithMotion.h"
+#include "../../Utility.h"
+#include "../../Texture.h"
 
 #pragma once
-
-//Self Reference: This code was used in a previous assignment.
 
 /**
 @brief A particle only created by a ParticleSystem
@@ -12,23 +11,23 @@ class Particle : public EntityWithMotion
 {
 public:
 	/**
-	@brief Create a Particle
+	 @brief Create a Particle.
 	
-	@param Texture* - Pointer to texture for the particle to display
-	@param Vec2 - Particles position
-	@param float - The maximum rotation speed
-	@param Colour - Colour/Tint to apply
-	@param float - Lifespan of the particle (Almost in seconds)
-	*/
-	Particle(Texture*,Vec2,float,Colour,float);
+	 @param [in,out] texture Pointer to texture for the particle to display.
+	 @param pos				 Particles position.
+	 @param colour			 Colour/Tint to apply.
+	 @param lifespan		 Lifespan of the particle (Almost in seconds)
+	 */
+	Particle(Texture* texture, Vec2 pos, SDL_Colour colour, float lifespan);
 	
 	/**
-	@brief Updates a Particle
+	 @brief Updates a Particle
+	 
+	 Applies velocity and lowers it's lifespan.
 	
-	Applies velocity and lowers it's lifespan
-	@param float - Time since last frame
-	*/
-	void update(float);
+	 @param dt Time since last frame.
+	 */
+	void update(float dt);
 
 	/// Draw the particle
 	void render();
@@ -42,7 +41,8 @@ public:
 
 private:
 	/// Tint to apply to the texture
-	Colour colour;
+	SDL_Colour colour;
+
 	/// How long the particle will exist (Almost in seconds)
 	float lifespan;
 };

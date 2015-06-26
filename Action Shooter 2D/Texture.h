@@ -98,6 +98,8 @@ public:
 	*/
 	void pushSpriteToScreen(SDL_Renderer* renderer, Vec2 pos, Vec2 scale, Vec2 spritePos, Vec2 spriteDimensions);
 
+	void setColourTint(SDL_Colour colour);
+
 private:
 	///The Texture data
 	SDL_Texture* textureData;

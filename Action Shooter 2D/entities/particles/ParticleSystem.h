@@ -1,12 +1,10 @@
 #include <vector>
 
-#include "../Vec2.h"
-#include "../Texture.h"
+#include "../../Vec2.h"
+#include "../../Texture.h"
 #include "Particle.h"
 
 #pragma once
-
-//Self Reference: This code was used in a previous assignment with moderate changes
 
 /**
 @brief An interface to create, manage and destroy particles for one emitter
@@ -15,38 +13,40 @@ class ParticleSystem
 {
 public:
 	/**
-	@brief Creates a Particle System
+	 @brief Creates a Particle System.
 	
-	@param Vec2 - Position of the emitter
-	@param std::vector<Texture*> - Array of texture*
-	@param int - How many particles are created each request
-	@param Vec2 - Direction to generate particles
-	@param Colour - Minimum Colour Values for use in random colour generation
-	@param Colour - Maximum Colour Values for use in random colour generation
-	*/
-	ParticleSystem(Vec2 emitterPos, std::vector<Texture*> textures, int particlesPerCallRate, Vec2 direction
-		,Colour min, Colour max);
+	 @param emitterPos			 Position of the emitter.
+	 @param [in,out] texture	 Particle Texture.
+	 @param particlesPerCallRate How many particles are created each request.
+	 @param direction			 Direction to generate particles.
+	 @param min					 Minimum Colour Values for use in random colour generation.
+	 @param max					 Maximum Colour Values for use in random colour generation.
+	 */
+	ParticleSystem(Vec2 emitterPos, Texture* texture, int particlesPerCallRate, 
+		Vec2 direction, SDL_Colour min, SDL_Colour max);
 
 	/**
-	@brief Creates a Particle System
-
-	@param Vec2 - Position of the emitter
-	@param texture - texture
-	@param int - How many particles are created each request
-	@param Colour - Minimum Colour Values for use in random colour generation
-	@param Colour - Maximum Colour Values for use in random colour generation
-	*/
-	ParticleSystem(Vec2 emitterPos, Texture* texture, int particlesPerCallRate, Colour min, Colour max);
+	 @brief Creates a Particle System.
+	
+	 @param emitterPos			 Position of the emitter.
+	 @param [in,out] texture	 Particle Texture.
+	 @param particlesPerCallRate - How many particles are created each request.
+	 @param min					 Minimum Colour Values for use in random colour generation.
+	 @param max					 Maximum Colour Values for use in random colour generation.
+	 */
+	ParticleSystem(Vec2 emitterPos, Texture* texture, int particlesPerCallRate, 
+		SDL_Colour min, SDL_Colour max);
 	
 	/// Clears vectors the particle system created
 	~ParticleSystem();
 
 	/**
-	@brief Update all particles in the system
+	 @brief Update all particles in the system
+	 
+	 Deletes expired particles, and runs update on all particles.
 	
-	Deletes expired particles, and runs update on all particles.
-	@param float - Time since last frame
-	*/
+	 @param dt Time since last frame.
+	 */
 	void update(float dt);
 
 	/**
@@ -57,9 +57,10 @@ public:
 	Vec2 getEmitterPos() { return emitterPos; }
 
 	/**
-	@brief Changes Emitter position
-	@param Vec2 - New Position
-	*/
+	 @brief Changes Emitter position.
+	
+	 @param newPos New Position.
+	 */
 	void setEmitterPos(Vec2 newPos);
 
 	/**
@@ -106,26 +107,19 @@ private:
 	Vec2 emitterPos;
 	/// Vector containing all the particles in the system
 	std::vector<Particle> particles;
-	/// Contains all available textures for the particles to use
-	std::vector<Texture*> textures;
+	/// Particle Textures
+	Texture* texture;
 	/// How many particles will be created every request
 	int particlesPerCallRate;
 	/// Direction to emit particles
 	Vec2 direction;
+	///Should the direction Vec2 be used
+	bool useDirection;
 	///Minimum Colour Values for use in random colour generation
-	Colour min;
+	SDL_Colour min;
 	///Maximum Colour Values for use in random colour generation
-	Colour max;
-	/** @brief The speed of the particles. */
+	SDL_Colour max;
+	///The speed of the particles.
 	float speed;
-
-	/// If no direction is wanted this tell the generator to use all directions
-	const int NO_DIRECTION = -454;
-
-	/** @brief The maximum particles per call. */
-	const int MAX_PARTICLES_PER_CALL = 100;
-
-	/** @brief The maximum speed of the particles. */
-	const int MAX_SPEED = 20;
 
 };
