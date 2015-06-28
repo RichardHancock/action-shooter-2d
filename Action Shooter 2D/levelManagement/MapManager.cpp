@@ -1,9 +1,9 @@
 #include "MapManager.h"
 #include "../Utility.h"
 
-MapManager::MapManager(std::string filepath)
+MapManager::MapManager(std::string filepath, TileTypeManager *tTypeManager)
 {
-	loadMapData(filepath);
+	loadMapData(filepath, tTypeManager);
 }
 
 MapManager::~MapManager()
@@ -11,7 +11,7 @@ MapManager::~MapManager()
 
 }
 
-void MapManager::loadMapData(std::string filepath)
+void MapManager::loadMapData(std::string filepath, TileTypeManager *tTypeManager)
 {
 	Utility::log(Utility::I, "Loading map data");
 
@@ -51,12 +51,14 @@ void MapManager::loadMapData(std::string filepath)
 					mapFile >> tileID;
 
 					//create a new tile and push it onto the 
-					Tile *mTile = new Tile(Vec2(k, j), Vec2(k, j), tileID);
+					Tile *mTile = new Tile(Vec2(k*32, j*32), Vec2(k, j), tileID, tTypeManager);
 					mapTiles[i][j].push_back(mTile);
 				}
 			}
 		}
 		mapFile.close();
+
+		maps[mID] = new Map(mapTiles);
 
 		Utility::log(Utility::I, "Map data loaded");
 	}
@@ -65,6 +67,10 @@ void MapManager::loadMapData(std::string filepath)
 		Utility::log(Utility::E, "Unable to open map file : " + filepath);
 	}
 
+}
 
 
+Map* MapManager::getMap(std::string mapID)
+{
+	return maps[mapID];
 }

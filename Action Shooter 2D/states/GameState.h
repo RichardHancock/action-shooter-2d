@@ -55,4 +55,6 @@ protected:
 	@brief Unloads this State.
 	*/
 	virtual void unload();
+
+	Map *currentMap;
 };

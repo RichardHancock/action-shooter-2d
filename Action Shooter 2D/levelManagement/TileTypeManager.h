@@ -27,6 +27,13 @@ public:
 	*/
 	~TileTypeManager();
 
+	/**
+	@brief Gets a pointer to the TileType associated with the ID.
+	@param tileTypeID The ID of wanted TileType.
+	@returns A pointer to the TileType.
+	*/
+	TileType* getTileType(std::string tileTypeID);
+
 private:
 	///The number of different spritesheets.
 	int numOfSpritesheets;
@@ -46,10 +53,4 @@ private:
 	*/
 	void loadTileData(std::string filePath, SDL_Renderer* renderer);
 
-	/**
-	@brief Gets a pointer to the TileType associated with the ID.
-	@param tileTypeID The ID of wanted TileType.
-	@param A pointer to the TileType.
-	*/
-	TileType* getTileType(std::string tileTypeID);
 };

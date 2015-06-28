@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../entities/Entity.h"
 #include "Tile.h"
 #include <Vector>
@@ -12,6 +14,7 @@ public:
 	@param d - The dimensions of the map in tiles
 	*/
 	Map(Vec2 p, Vec2 d);
+	Map(std::vector<std::vector<std::vector<Tile*>>> mapData);
 	~Map();
 
 	/**
@@ -30,6 +33,8 @@ private:
 
 	std::vector<std::vector<Tile*>> mapLayerOne;
 	std::vector<std::vector<Tile*>> mapLayerTwo;
+
+	std::vector<std::vector<std::vector<Tile*>>> mapTiles;
 
 	/**
 	@brief Creates a blank map

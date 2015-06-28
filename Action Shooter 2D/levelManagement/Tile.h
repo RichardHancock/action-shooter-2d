@@ -3,6 +3,7 @@
 #include <string>
 #include "../entities/Entity.h"
 #include "TileType.h"
+#include "TileTypeManager.h"
 
 class Tile : public Entity
 {
@@ -14,7 +15,7 @@ public:
 	@param colRow - The table value in the map
 	@param tID - The ID used to represent the type of tile
 	*/
-	Tile(Vec2 p, Vec2 colRow, std::string tID);
+	Tile(Vec2 p, Vec2 colRow, std::string tID, TileTypeManager *ttManager);
 
 	~Tile();
 
@@ -28,7 +29,7 @@ public:
 	/**
 	@brief Render any sprites relevant to the entity
 	*/
-	void render();
+	void render(SDL_Renderer *renderer);
 
 	/**
 	@brief Sets the tile ID
@@ -57,5 +58,8 @@ private:
 
 	///The tile table value - row, column
 	Vec2 mapIndexPosition;
+
+	///Reference to tile type manager
+	TileTypeManager * tTypeManager;
 
 };
