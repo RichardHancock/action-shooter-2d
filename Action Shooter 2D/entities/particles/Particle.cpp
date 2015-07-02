@@ -19,7 +19,7 @@ void Particle::render(Platform* platform)
 {
 	texture->setColourTint(colour);
 
-	texture->pushToScreen(platform->getRenderer(), pos);
+	texture->pushToScreen(platform->getRenderer(), pos, Vec2(4));
 }
 
 bool Particle::hasExpired()

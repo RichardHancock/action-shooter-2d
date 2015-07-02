@@ -5,6 +5,7 @@
 #include "../levelManagement/MapManager.h"
 #include "../levelManagement/Map.h"
 #include "../Platform.h"
+#include "../entities/particles/ParticleSystem.h"
 
 /**
 @class GameState
@@ -58,4 +59,6 @@ protected:
 
 	//TMP FOR TESTING
 	Map *currentMap;
+
+	ParticleSystem* particles;
 };
