@@ -1,7 +1,7 @@
 #include "Particle.h"
 
 Particle::Particle(Texture* texture, Vec2 pos, SDL_Colour colour, float lifespan)
-	: EntityWithMotion(pos), colour(colour), lifespan(lifespan)
+	: EntityWithMotion(texture, pos), colour(colour), lifespan(lifespan)
 {
 	
 }
@@ -15,11 +15,11 @@ void Particle::update(float dt)
 	lifespan -= dt;
 }
 
-void Particle::render()
+void Particle::render(Platform* platform)
 {
-	//sprite->setColourTint(colour);
+	texture->setColourTint(colour);
 
-	//sprite->draw(pos, rotation);
+	texture->pushToScreen(platform->getRenderer(), pos);
 }
 
 bool Particle::hasExpired()

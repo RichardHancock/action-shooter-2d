@@ -1,4 +1,5 @@
 #include "ParticleSystem.h"
+#include "../../Utility.h"
 
 ParticleSystem::ParticleSystem(Vec2 emitterPos, Texture* texture, int particlesPerCallRate, 
 	Vec2 direction, SDL_Colour min, SDL_Colour max)
@@ -55,11 +56,11 @@ void ParticleSystem::setEmitterPos(Vec2 newPos)
 	emitterPos = newPos;
 }
 
-void ParticleSystem::render()
+void ParticleSystem::render(Platform* platform)
 {
 	for (unsigned int i = 0; i < particles.size(); i++)
 	{
-		particles[i].render();
+		particles[i].render(platform);
 	}
 }
 

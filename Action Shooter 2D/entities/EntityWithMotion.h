@@ -6,9 +6,9 @@ class EntityWithMotion : public Entity
 {
 public:
 
-	EntityWithMotion(Vec2 pos);
+	EntityWithMotion(Texture* texture, Vec2 pos);
 
-	EntityWithMotion(Vec2 pos, Vec2 dimensions);
+	EntityWithMotion(Texture* Texture, Vec2 pos, Vec2 dimensions);
 
 	~EntityWithMotion();
 

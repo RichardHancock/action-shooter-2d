@@ -1,7 +1,5 @@
 #include <vector>
 
-#include "../../Vec2.h"
-#include "../../Texture.h"
 #include "Particle.h"
 
 #pragma once
@@ -101,7 +99,7 @@ public:
 	/**
 	@brief Draws all particles
 	*/
-	void render();
+	void render(Platform* platform);
 private:
 	/// Position of the Particle Emitter
 	Vec2 emitterPos;

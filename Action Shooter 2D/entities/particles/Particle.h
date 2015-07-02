@@ -1,6 +1,5 @@
 #include "../EntityWithMotion.h"
-#include "../../Utility.h"
-#include "../../Texture.h"
+#include "../../Platform.h"
 
 #pragma once
 
@@ -29,8 +28,12 @@ public:
 	 */
 	void update(float dt);
 
-	/// Draw the particle
-	void render();
+	/**
+	 @brief Draw the particle.
+	
+	 @param [in,out] platform If non-null, the platform.
+	 */
+	void render(Platform* platform);
 
 	/**
 	@brief Checks if the lifespan of the particle has run out
