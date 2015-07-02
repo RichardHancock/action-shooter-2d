@@ -83,6 +83,7 @@
     <ClCompile Include="audio\SFX.cpp" />
     <ClCompile Include="entities\Entity.cpp" />
     <ClCompile Include="levelManagement\Map.cpp" />
+    <ClCompile Include="levelManagement\MapManager.cpp" />
     <ClCompile Include="levelManagement\Tile.cpp" />
     <ClCompile Include="levelManagement\TileType.cpp" />
     <ClCompile Include="levelManagement\TileTypeManager.cpp" />
@@ -104,6 +105,7 @@
     <ClInclude Include="dependencies\SDL_ttf.h" />
     <ClInclude Include="entities\Entity.h" />
     <ClInclude Include="levelManagement\Map.h" />
+    <ClInclude Include="levelManagement\MapManager.h" />
     <ClInclude Include="levelManagement\Tile.h" />
     <ClInclude Include="levelManagement\TileType.h" />
     <ClInclude Include="levelManagement\TileTypeManager.h" />

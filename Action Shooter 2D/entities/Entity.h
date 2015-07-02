@@ -1,73 +1,89 @@
-#include "../Vec2.h"
-
 #pragma once
 
+#include "../Vec2.h"
+#include "../Texture.h"
+
+/**
+@brief Contains all the data and functions dealing with the Entity.
+*/
 class Entity
 {
 public:
 	/**
-	@brief Create the Entity.
-
-	@param pos - Vec2 position
+	@brief Create the Entity using the size of the Texture as the size of the Entity.
+	@param texture A pointer to the Texture.
+	@param pos The position of the Entity.
 	*/
-	Entity(Vec2 pos);
+	Entity(Texture* texture, Vec2 pos);
+
 	/**
 	@brief Create the Entity.
-
-	@param p - Vec2 position
-	@param d - Vec2 dimensions
+	@param texture A pointer to the Texture.
+	@param pos The position of the Entity.
+	@param dimensions The dimensions of the Entity.
 	*/
-	Entity(Vec2 p, Vec2 d);
-
-	virtual ~Entity() {}
+	Entity(Texture* texture, Vec2 pos, Vec2 dimensions);
 
 	/**
-	@brief Set the entity's position
-
-	@param p - Vec2 position
+	@brief Create the Entity with a sprite from a spritesheet.
+	@param texture A pointer to the Texture.
+	@param pos The position of the Entity.
+	@param dimensions The dimensions of the Entity.
+	@param pos The position of the sprite in the spritesheet.
+	@param dimensions The dimensions of the sprite in the spritesheet.
 	*/
-	void setPosition(Vec2 p);
+	Entity(Texture* texture, Vec2 pos, Vec2 dimensions, Vec2 spritePos, Vec2 spriteDimensions);
 
 	/**
-	@brief Get the entity's position
-
-	@return Entity's position
+	@brief Virtual Tile destructor.
 	*/
-	Vec2 getPosition();
+	virtual ~Entity();
 
 	/**
-	@brief Set the entity's dimensions
-
-	@param d - Vec2 dimensions
-	*/
-	void setDimensions(Vec2 d);
-
-	/**
-	@brief Get the entity's dimensions
-
-	@return Entity's dimensions
-	*/
-	Vec2 getDimensions();
-
-
-
-	/**
-	@brief Update any internal values.
-
-	@param dt - delta time.
+	@brief A pure virtual function to update the Entity.
+	@param dt The delta time.
 	*/
 	virtual void update(float dt) = 0;
 
 	/**
-	@brief Render any sprites relevant to the entity
+	@brief A virtual function to render the Entity.
+	@param renderer A pointer to the renderer.
 	*/
-	virtual void render() = 0;
+	virtual void render(SDL_Renderer* renderer);
+
+	/**
+	@brief Set the position of the Entity.
+	@param pos The position of the Entity.
+	*/
+	void setPosition(Vec2 pos);
+
+	/**
+	@brief Set the dimensions of the Entity.
+	@param dimensions The dimensions of the Entity.
+	*/
+	void setDimensions(Vec2 dimensions);
+
+	/**
+	@brief Get the position of the Entity.
+	@return The position of the Entity.
+	*/
+	Vec2 getPosition();	
+
+	/**
+	@brief Get the dimensions of the Entity.
+	@return The dimensions of the Entity.
+	*/
+	Vec2 getDimensions();
 
 protected:
-	/// The position of this entity - x, y
+	///The XY position of the Entity.
 	Vec2 pos;
-
-	/// The dimensions of this entity - width, height
-	Vec2 dimen;
-	
+	///The dimensions of the Entity.
+	Vec2 dimensions;
+	///A pointer to the Texture of the entity.
+	Texture* texture;
+	///The position of the sprite in the spritesheet.
+	Vec2 spritePos;
+	///The dimensions of the sprite in the spritesheet.
+	Vec2 spriteDimensions;
 };

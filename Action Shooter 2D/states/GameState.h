@@ -2,6 +2,8 @@
 
 #include "State.h"
 #include "../levelManagement/TileTypeManager.h"
+#include "../levelManagement/MapManager.h"
+#include "../levelManagement/Map.h"
 #include "../Platform.h"
 
 /**
@@ -53,4 +55,7 @@ protected:
 	@brief Unloads this State.
 	*/
 	virtual void unload();
+
+	//TMP FOR TESTING
+	Map *currentMap;
 };

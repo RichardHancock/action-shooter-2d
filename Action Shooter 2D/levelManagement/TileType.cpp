@@ -1,14 +1,10 @@
 #include "TileType.h"
 
 TileType::TileType(Texture* spritesheet, std::string iD, bool collidable, bool destructible,
-	Vec2 spriteIndexPositions, Vec2 spriteDimensions)
+	Vec2 spriteIndexPositions, Vec2 spriteDimensions) 
+	: spritesheet(spritesheet), iD(iD), collidable(collidable), destructible(destructible),
+	spriteIndexPositions(spriteIndexPositions), spriteDimensions(spriteDimensions)
 {
-	this->spritesheet = spritesheet;
-	this->iD = iD;
-	this->collidable = collidable;
-	this->destructible = destructible;
-	this->spriteIndexPositions = spriteIndexPositions;
-	this->spriteDimensions = spriteDimensions;
 	spritePosition = spriteIndexPositions * spriteDimensions;
 }
 
@@ -30,4 +26,24 @@ bool TileType::getCollidable()
 bool TileType::getDestructible()
 {
 	return destructible;
+}
+
+Texture* TileType::getTexture()
+{
+	return spritesheet;
+}
+
+std::string TileType::getID()
+{
+	return iD;
+}
+
+Vec2 TileType::getSpritePos()
+{
+	return spritePosition;
+}
+
+Vec2 TileType::getSpriteDimensions()
+{
+	return spriteDimensions;
 }

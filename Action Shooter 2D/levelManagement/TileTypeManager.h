@@ -27,17 +27,24 @@ public:
 	*/
 	~TileTypeManager();
 
+	/**
+	@brief Gets a pointer to the TileType associated with the ID.
+	@param tileTypeID The ID of wanted TileType.
+	@returns A pointer to the TileType.
+	*/
+	TileType* getTileType(std::string tileTypeID);
+
 private:
-	///The number of tile groups.
-	int numOfGroups;
+	///The number of different spritesheets.
+	int numOfSpritesheets;
 	///The number of tile types.
 	int numOfTypes;
-	///The loaded tiles. Contains the tile data for each group, e.g. Background Tiles(B), Objects (O), etc.
-	std::unordered_map<char, std::vector<TileType*>> tiles;
-	///The spritesheets for each group, e.g. Background Tiles(B), Objects (O), etc.
-	std::unordered_map<char, Texture*> spritesheets;
-	///The dimensions of the sprites for each group, e.g. Background Tiles(B), Objects (O), etc.
-	std::unordered_map<char, Vec2> spriteDimensions;
+	///The loaded tiles. Contains the tile data.
+	std::unordered_map<std::string, TileType*> tileTypes;
+	///The spritesheets.
+	std::unordered_map<std::string, Texture*> spritesheets;
+	///The dimensions of the sprites for each spritesheet.
+	std::unordered_map<std::string, Vec2> spriteDimensions;
 
 	/**
 	@brief Loads the tile data from the file.
@@ -45,4 +52,5 @@ private:
 	@param renderer A pointer to the renderer.
 	*/
 	void loadTileData(std::string filePath, SDL_Renderer* renderer);
+
 };
