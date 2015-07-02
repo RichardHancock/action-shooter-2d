@@ -1,74 +1,87 @@
 #include "MapManager.h"
 #include "../Utility.h"
 
-MapManager::MapManager(std::string filepath, TileTypeManager *tTypeManager)
+MapManager::MapManager(std::string filePath, TileTypeManager* tileTypeManager)
 {
-	loadMapData(filepath, tTypeManager);
+	loadMapData(filePath, tileTypeManager);
 }
 
 MapManager::~MapManager()
 {
-
 }
 
-void MapManager::loadMapData(std::string filepath, TileTypeManager *tTypeManager)
+void MapManager::loadMapData(std::string filePath, TileTypeManager* tileTypeManager)
 {
-	Utility::log(Utility::I, "Loading map data");
+	//A vector to hold all of the layer IDs.
+	std::vector<std::string> layerIDs;
 
-	std::ifstream mapFile(filepath);
+	//A 3D vector that contains all of the tiles. [Layer ID][Y Index][X Index]
+	std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles;
+
+	Utility::log(Utility::I, "Loading map data : " + filePath);
+
+	std::ifstream mapFile(filePath);
 
 	if (mapFile.is_open())
 	{
-		std::string mID;
-		Vec2 dimen;
-		int numLayers;
+		std::string mapID;
+		Vec2 mapIndexDimensions;
+		int numberOfLayers;
+		Vec2 tileDimensions;
 
-		mapFile >> mID;
-		mapFile >> dimen.x;
-		mapFile >> dimen.y;
-		mapFile >> numLayers;
+		mapFile >> mapID;
+		mapFile >> mapIndexDimensions.x;
+		mapFile >> mapIndexDimensions.y;
+		mapFile >> numberOfLayers;
+		mapFile >> tileDimensions.x;
+		mapFile >> tileDimensions.y;
 
-		for (int i = 0; i < numLayers; i++)
+		//store the map ID
+		mapIDs.push_back(mapID);
+
+		for (int i = 0; i < numberOfLayers; i++)
 		{
-			char type;
-			mapFile >> type;
+			//Store the ID of the layer
+			std::string layerID;
+			mapFile >> layerID;
+			layerIDs.push_back(layerID);
 
-			layerType.push_back(type);
-
-			//create new instances of the layer portion of the map
-			std::vector<std::vector<Tile*>> layers;
-			mapTiles.push_back(layers);
-			//use y first to go through every value of each row
-			for (int j = 0; j < dimen.y; j++)
+			for (int y = 0; y < mapIndexDimensions.y; y++)
 			{
-				//create new instance of tile portion of the map
 				std::vector<Tile*> tiles;
-				mapTiles[i].push_back(tiles);
-				for (int k = 0; k < dimen.x; k++)
+				mapTiles[layerID].push_back(tiles);
+				for (int x = 0; x < mapIndexDimensions.x; x++)
 				{
+					//Get the tile
 					std::string tileID;
-
 					mapFile >> tileID;
 
-					//create a new tile and push it onto the 
-					Tile *mTile = new Tile(Vec2(k*32, j*32), Vec2(k, j), tileID, tTypeManager);
-					mapTiles[i][j].push_back(mTile);
+					//Get the data to load into the new tile
+					TileType* tileType = tileTypeManager->getTileType(tileID);
+					Vec2 spriteDimensions = tileType->getSpriteDimensions();
+					Vec2 spritePos = tileType->getSpritePos();
+					Texture* tileTexture = tileType->getTexture();
+
+					//Store tile
+					mapTiles[layerID][y].push_back(
+						new Tile(tileTexture, Vec2((x * tileDimensions.x), (y * tileDimensions.y)), tileDimensions, spritePos, spriteDimensions, tileType)
+						);
 				}
 			}
 		}
 		mapFile.close();
 
-		maps[mID] = new Map(mapTiles);
+		//Store the map
+		maps[mapID] = new Map(mapTiles, layerIDs);
 
 		Utility::log(Utility::I, "Map data loaded");
 	}
-	else {
+	else 
+	{
 		//Error
-		Utility::log(Utility::E, "Unable to open map file : " + filepath);
+		Utility::log(Utility::E, "Unable to open map file : " + filePath);
 	}
-
 }
-
 
 Map* MapManager::getMap(std::string mapID)
 {

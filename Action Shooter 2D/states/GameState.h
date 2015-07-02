@@ -56,5 +56,6 @@ protected:
 	*/
 	virtual void unload();
 
+	//TMP FOR TESTING
 	Map *currentMap;
 };

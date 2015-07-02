@@ -1,21 +1,40 @@
 #include "Entity.h"
 
-Entity::Entity(Vec2 pos)
-	: pos(pos)
+Entity::Entity(Texture* texture, Vec2 pos) 
+	: texture(texture), pos(pos), spritePos(Vec2())
 {
-	//pos = p;
-	dimen = Vec2(0, 0);
+	dimensions = texture->getDimensions();
+	spriteDimensions = texture->getDimensions();
 }
 
-Entity::Entity(Vec2 p, Vec2 d)
+Entity::Entity(Texture* texture, Vec2 pos, Vec2 dimensions) 
+	: texture(texture), pos(pos), dimensions(dimensions), spritePos(Vec2())
 {
-	pos = p;
-	dimen = d;
+	spriteDimensions = texture->getDimensions();
 }
 
-void Entity::setPosition(Vec2 p)
+Entity::Entity(Texture* texture, Vec2 pos, Vec2 dimensions, Vec2 spritePos, Vec2 spriteDimensions)
+	: texture(texture), pos(pos), dimensions(dimensions), spritePos(spritePos), spriteDimensions(spriteDimensions)
 {
-	pos = p;
+}
+
+Entity::~Entity()
+{
+}
+
+void Entity::render(SDL_Renderer* renderer)
+{
+	texture->pushSpriteToScreen(renderer, pos, dimensions, spritePos, spriteDimensions);
+}
+
+void Entity::setPosition(Vec2 pos)
+{
+	this->pos = pos;
+}
+
+void Entity::setDimensions(Vec2 dimensions)
+{
+	this->dimensions = dimensions;
 }
 
 Vec2 Entity::getPosition()
@@ -23,17 +42,7 @@ Vec2 Entity::getPosition()
 	return pos;
 }
 
-void Entity::setDimensions(Vec2 d)
-{
-	dimen = d;
-}
-
 Vec2 Entity::getDimensions()
 {
-	return dimen;
-}
-
-void Entity::render(SDL_Renderer *renderer)
-{
-	entityImg->pushSpriteToScreen(renderer, pos, Vec2(0), dimen);
+	return dimensions;
 }

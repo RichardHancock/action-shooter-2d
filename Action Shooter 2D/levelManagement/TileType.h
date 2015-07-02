@@ -47,6 +47,30 @@ public:
 	*/
 	bool getDestructible();
 
+	/**
+	@brief Gets a pointer to the TileType Texture.
+	@return A pointer to the Texture.
+	*/
+	Texture* getTexture();
+
+	/**
+	@brief Gets the TileType ID.
+	@return The TileType ID.
+	*/
+	std::string getID();
+
+	/**
+	@brief Gets the sprites position in the spritesheet.
+	@return The sprites position.
+	*/
+	Vec2 getSpritePos();
+
+	/**
+	@brief Gets the sprites dimension in the spritesheet.
+	@return The sprites dimensions.
+	*/
+	Vec2 getSpriteDimensions();
+
 private:
 	///A pointer to the spritesheet.
 	Texture* spritesheet;

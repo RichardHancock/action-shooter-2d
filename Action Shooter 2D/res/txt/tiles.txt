@@ -1,7 +1,8 @@
 2
 A res/img/objects.png 32 32
 B res/img/backgroundTiles.png 32 32
-4
+5
+A XX 0 0 0 0
 A W0 1 0 0 0
 A D0 1 1 1 0
 B G0 0 0 0 0

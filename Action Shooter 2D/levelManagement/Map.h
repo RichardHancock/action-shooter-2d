@@ -4,42 +4,39 @@
 #include "Tile.h"
 #include <Vector>
 
-class Map : public Entity
+/**
+@brief Contains all the data and functions dealing with the Map objects.
+*/
+class Map
 {
 public:
 	/**
-	@brief Creates the map for the level
-
-	@param p - The position of the map
-	@param d - The dimensions of the map in tiles
+	@brief Creates the Map for the level.
+	@param mapTiles The Tiles in the Map.
+	@param layerIDs The list of the layer ID's.
 	*/
-	Map(Vec2 p, Vec2 d);
-	Map(std::vector<std::vector<std::vector<Tile*>>> mapData);
+	Map(std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles, std::vector<std::string> layerIDs);
+
+	/**
+	@brief Map destructor.
+	*/
 	~Map();
 
 	/**
-	@brief Update any internal values.
-
-	@param dt - delta time.
+	@brief Update the Map.
+	@param dt The delta time.
 	*/
 	void update(float dt);
 
 	/**
-	@brief Render any sprites relevant to the entity
+	@brief Render the Tile objects in the map.
+	@param renderer A pointer to the renderer.
 	*/
-	void render(SDL_Renderer *renderer);
+	void render(SDL_Renderer* renderer);
 
 private:
-
-	std::vector<std::vector<Tile*>> mapLayerOne;
-	std::vector<std::vector<Tile*>> mapLayerTwo;
-
-	std::vector<std::vector<std::vector<Tile*>>> mapTiles;
-
-	/**
-	@brief Creates a blank map
-	*/
-	void createBlankMap();
-
-
+	///A vector to hold all of the layer IDs.
+	std::vector<std::string> layerIDs;
+	///A 3D vector that contains all of the tiles. [Layer ID][Y Index][X Index]
+	std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles;
 };

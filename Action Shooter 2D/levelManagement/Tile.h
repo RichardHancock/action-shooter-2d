@@ -5,61 +5,41 @@
 #include "TileType.h"
 #include "TileTypeManager.h"
 
+/**
+@brief Contains all the data and functions dealing with the Tile objects.
+*/
 class Tile : public Entity
 {
 public:
 	/**
-	@brief Create the Tile
-
-	@param p - Tile position
-	@param colRow - The table value in the map
-	@param tID - The ID used to represent the type of tile
+	@brief Constructs the Tile object.
+	@param texture A pointer to the Tile Texture.
+	@param pos The position of the Tile.
+	@param dimensions The dimensions of the Tile.
+	@param pos The position of the sprite in the spritesheet.
+	@param dimensions The dimensions of the sprite in the spritesheet.
+	@param tileType A pointer to the TileType.
 	*/
-	Tile(Vec2 p, Vec2 colRow, std::string tID, TileTypeManager *ttManager);
+	Tile(Texture* texture, Vec2 pos, Vec2 dimensions, Vec2 spritePos, Vec2 spriteDimensions, TileType* tileType);
 
+	/**
+	@brief Tile destructor.
+	*/
 	~Tile();
 
 	/**
-	@brief Update any internal values.
-
-	@param dt - delta time.
+	@brief Updates the Tile.
+	@param dt The delta time.
 	*/
 	void update(float dt);
 
 	/**
-	@brief Render any sprites relevant to the entity
+	@brief Render the Tile.
+	@param renderer A pointer to the renderer.
 	*/
-	void render(SDL_Renderer *renderer);
-
-	/**
-	@brief Sets the tile ID
-
-	@param i - The integer to set the tile ID to
-	*/
-	void setID(int i);
-
-	/**
-	@brief Gets the tile ID
-
-	@return Tile ID
-	*/
-	int getID();
-
+	void render(SDL_Renderer* renderer);
 
 private:
-	///The tile size
-	int TS;
-
-	///The ID that represents the type of tile
-	std::string ID;
-
-	///Reference to tile type
-	TileType *type;
-
-	///The tile table value - row, column
-	Vec2 mapIndexPosition;
-
-	///Reference to tile type manager
-	TileTypeManager * tTypeManager;
-
+	///Reference to tile type.
+	TileType* tileType;
 };

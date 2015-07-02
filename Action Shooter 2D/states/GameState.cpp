@@ -54,23 +54,18 @@ void GameState::update(float dt)
 
 void GameState::render()
 {
+	//TMP FOR TESTING
 	currentMap->render(platform->getRenderer());
 }
 
 void GameState::load()
 {
-	//Map *m = new Map(Vec2(0, 0), Vec2(10, 10));
-
 	//TMP FOR TESTING
 	TileTypeManager* tmp = new TileTypeManager("res/txt/tiles.txt", platform->getRenderer());
-
 	MapManager *mapmng = new MapManager("res/txt/map1.txt", tmp);
-
-
 	currentMap = mapmng->getMap("M01");
 }
 
 void GameState::unload()
 {
-	
 }
