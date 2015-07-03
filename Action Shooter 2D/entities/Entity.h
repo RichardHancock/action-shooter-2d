@@ -34,19 +34,17 @@ public:
 	*/
 	Entity(Texture* texture, Vec2 pos, Vec2 dimensions, Vec2 spritePos, Vec2 spriteDimensions);
 
-	/**
-	@brief Virtual Tile destructor.
-	*/
+
 	virtual ~Entity();
 
 	/**
-	@brief A pure virtual function to update the Entity.
+	@brief Update the Entity.
 	@param dt The delta time.
 	*/
 	virtual void update(float dt) = 0;
 
 	/**
-	@brief A virtual function to render the Entity.
+	@brief Render the Entity.
 	@param renderer A pointer to the renderer.
 	*/
 	virtual void render(SDL_Renderer* renderer);

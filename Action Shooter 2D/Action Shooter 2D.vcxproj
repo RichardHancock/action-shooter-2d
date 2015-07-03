@@ -82,6 +82,9 @@
     <ClCompile Include="audio\Music.cpp" />
     <ClCompile Include="audio\SFX.cpp" />
     <ClCompile Include="entities\Entity.cpp" />
+    <ClCompile Include="entities\EntityWithMotion.cpp" />
+    <ClCompile Include="entities\particles\Particle.cpp" />
+    <ClCompile Include="entities\particles\ParticleSystem.cpp" />
     <ClCompile Include="levelManagement\Map.cpp" />
     <ClCompile Include="levelManagement\MapManager.cpp" />
     <ClCompile Include="levelManagement\Tile.cpp" />
@@ -104,6 +107,9 @@
     <ClInclude Include="dependencies\SDL_mixer.h" />
     <ClInclude Include="dependencies\SDL_ttf.h" />
     <ClInclude Include="entities\Entity.h" />
+    <ClInclude Include="entities\EntityWithMotion.h" />
+    <ClInclude Include="entities\particles\Particle.h" />
+    <ClInclude Include="entities\particles\ParticleSystem.h" />
     <ClInclude Include="levelManagement\Map.h" />
     <ClInclude Include="levelManagement\MapManager.h" />
     <ClInclude Include="levelManagement\Tile.h" />

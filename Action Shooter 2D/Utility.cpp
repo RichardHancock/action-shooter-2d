@@ -221,6 +221,15 @@ bool Utility::lineRectIntersection(Vec2 lineP1, Vec2 lineP2, SDL_Rect rect)
 	}
 }
 
+SDL_Colour Utility::newColour(int r, int g, int b)
+{
+	SDL_Colour colour;
+	colour.r = r;
+	colour.g = g;
+	colour.b = b;
+	return colour;
+}
+
 //Timer
 
 std::unordered_map<std::string, Utility::Timer::TimerStruct> Utility::Timer::timers;

@@ -34,6 +34,12 @@
     <Filter Include="Header Files\Entities">
       <UniqueIdentifier>{144894b3-9f79-4ec4-b2c6-9096ba661e7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entities\Particles">
+      <UniqueIdentifier>{c378345f-86d5-465e-a1b9-94ea1c645909}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Particles">
+      <UniqueIdentifier>{2878c3d2-5b0b-47cc-9dc0-392b7a4afc03}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Header Files\Audio">
       <UniqueIdentifier>{cb894405-c6c3-4b66-bb48-2dac7a814e6f}</UniqueIdentifier>
     </Filter>
@@ -75,6 +81,12 @@
     <ClCompile Include="states\GameState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
+    <ClCompile Include="entities\particles\Particle.cpp">
+      <Filter>Source Files\Entities\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="entities\particles\ParticleSystem.cpp">
+      <Filter>Source Files\Entities\Particles</Filter>
+    </ClCompile>
     <ClCompile Include="audio\Audio.cpp">
       <Filter>Source Files\Audio</Filter>
     </ClCompile>
@@ -83,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="audio\SFX.cpp">
       <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="entities\EntityWithMotion.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="levelManagement\Map.cpp">
       <Filter>Source Files\Level Management</Filter>
@@ -143,6 +158,12 @@
     <ClInclude Include="levelManagement\MapManager.h">
       <Filter>Header Files\Level Management</Filter>
     </ClInclude>
+    <ClInclude Include="entities\particles\Particle.h">
+      <Filter>Header Files\Entities\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\particles\ParticleSystem.h">
+      <Filter>Header Files\Entities\Particles</Filter>
+    </ClInclude>
     <ClInclude Include="audio\Audio.h">
       <Filter>Header Files\Audio</Filter>
     </ClInclude>
@@ -151,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="audio\SFX.h">
       <Filter>Header Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\EntityWithMotion.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

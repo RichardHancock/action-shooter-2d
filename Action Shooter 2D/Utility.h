@@ -134,7 +134,7 @@ namespace Utility
 	@return Scaled int.
 	 */
 	int fontSizeScale(int intToScale, Vec2 screenSize);
-
+		
 	/**
 	@brief Returns the center position of a rectangle.
 	
@@ -179,6 +179,17 @@ namespace Utility
 	@return Is there an intersection.
 	 */
 	bool lineRectIntersection(Vec2 lineP1, Vec2 lineP2, SDL_Rect rect);
+
+	/**
+	 @brief Creates a new colour.
+	
+	 @param r Red Channel.
+	 @param g Green Channel.
+	 @param b Blue Channel.
+	
+	 @return A SDL_Colour.
+	 */
+	SDL_Colour newColour(int r, int g, int b);
 
 	//Timer Management
 
