@@ -38,7 +38,7 @@ public:
 	/**
 	@brief Checks if the lifespan of the particle has run out
 	
-	@return bool - True if expired
+	@return True if expired
 	*/
 	bool hasExpired();
 

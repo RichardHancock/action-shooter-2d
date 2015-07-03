@@ -16,7 +16,7 @@ public:
 	 @param emitterPos			 Position of the emitter.
 	 @param [in,out] texture	 Particle Texture.
 	 @param particlesPerCallRate How many particles are created each request.
-	 @param direction			 Direction to generate particles.
+	 @param direction			 Direction to fire particles.
 	 @param min					 Minimum Colour Values for use in random colour generation.
 	 @param max					 Maximum Colour Values for use in random colour generation.
 	 */
@@ -28,7 +28,7 @@ public:
 	
 	 @param emitterPos			 Position of the emitter.
 	 @param [in,out] texture	 Particle Texture.
-	 @param particlesPerCallRate - How many particles are created each request.
+	 @param particlesPerCallRate How many particles are created each request.
 	 @param min					 Minimum Colour Values for use in random colour generation.
 	 @param max					 Maximum Colour Values for use in random colour generation.
 	 */
@@ -97,10 +97,14 @@ public:
 	void setSpeed(float newSpeed);
 
 	/**
-	@brief Draws all particles
-	*/
+	 @brief Draws all particles.
+	
+	 @param [in,out] platform If non-null, the platform.
+	 */
 	void render(Platform* platform);
+
 private:
+
 	/// Position of the Particle Emitter
 	Vec2 emitterPos;
 	/// Vector containing all the particles in the system
