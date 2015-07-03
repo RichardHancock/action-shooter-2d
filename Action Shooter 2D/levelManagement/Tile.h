@@ -16,8 +16,8 @@ public:
 	@param texture A pointer to the Tile Texture.
 	@param pos The position of the Tile.
 	@param dimensions The dimensions of the Tile.
-	@param pos The position of the sprite in the spritesheet.
-	@param dimensions The dimensions of the sprite in the spritesheet.
+	@param spritePos The position of the sprite in the spritesheet.
+	@param spriteDimensions The dimensions of the sprite in the spritesheet.
 	@param tileType A pointer to the TileType.
 	*/
 	Tile(Texture* texture, Vec2 pos, Vec2 dimensions, Vec2 spritePos, Vec2 spriteDimensions, TileType* tileType);

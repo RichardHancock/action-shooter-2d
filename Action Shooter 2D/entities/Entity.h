@@ -29,8 +29,8 @@ public:
 	@param texture A pointer to the Texture.
 	@param pos The position of the Entity.
 	@param dimensions The dimensions of the Entity.
-	@param pos The position of the sprite in the spritesheet.
-	@param dimensions The dimensions of the sprite in the spritesheet.
+	@param spritePos The position of the sprite in the spritesheet.
+	@param spriteDimensions The dimensions of the sprite in the spritesheet.
 	*/
 	Entity(Texture* texture, Vec2 pos, Vec2 dimensions, Vec2 spritePos, Vec2 spriteDimensions);
 
