@@ -1,7 +1,7 @@
 2
 A res/img/objects.png 32 32
 B res/img/backgroundTiles.png 32 32
-25
+33
 A XX 0 0 0 0
 A W0 1 0 0 0
 A W1 1 0 1 0
@@ -27,6 +27,14 @@ A DA 0 1 4 2
 A DB 0 1 5 2
 B G0 0 0 0 0
 B R0 0 0 1 0
+B R1 0 0 2 0
+B R2 0 0 3 0
+B R3 0 0 4 0
+B R4 0 0 5 0
+B R5 0 0 6 0
+B R6 0 0 7 0
+B R7 0 0 8 0
+B R8 0 0 9 0
 
 //Comments:
 //Number of Tile Groups
@@ -43,17 +51,25 @@ B R0 0 0 1 0
 //W7 = Wall Top Right (Reversed)
 //W8 = Wall Bottom Right (Reversed)
 //W9 = Wall Bottom Left (Reversed)
-//D0 = Door Single (Top) --
-//D1 = Door Double Left (Top) --
-//D2 = Door Double Right (Top) --
-//D3 = Door Single (Right) --
-//D4 = Door Double Top (Right) --
-//D5 = Door Double Bottom (Right) --
-//D6 = Door Single (Bottom) --
-//D7 = Door Double Left (Bottom) --
-//D8 = Door Double Right (Bottom) --
-//D9 = Door Single (Left) --
-//DA = Door Double Top (Left) --
-//DB = Door Double Bottom (Left) --
-//Grass
-//Rock
+//D0 = Door Single (Top)
+//D1 = Door Double Left (Top)
+//D2 = Door Double Right (Top)
+//D3 = Door Single (Right)
+//D4 = Door Double Top (Right)
+//D5 = Door Double Bottom (Right)
+//D6 = Door Single (Bottom)
+//D7 = Door Double Left (Bottom)
+//D8 = Door Double Right (Bottom)
+//D9 = Door Single (Left)
+//DA = Door Double Top (Left)
+//DB = Door Double Bottom (Left)
+//G0 = Grass
+//R0 = Rock
+//R1 = Rock to Grass Top Left
+//R2 = Rock to Grass Top
+//R3 = Rock to Grass Top Right
+//R4 = Rock to Grass Left
+//R5 = Rock to Grass Right
+//R6 = Rock to Grass Bottom Left
+//R7 = Rock to Grass Bottom
+//R8 = Rock to Grass Bottom Right
