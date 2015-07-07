@@ -1,0 +1,7 @@
+1
+A0 res/txt/creatures/grunt.txt
+
+
+//No. of creatures
+//ID, Filename1
+//Filename2 etc...

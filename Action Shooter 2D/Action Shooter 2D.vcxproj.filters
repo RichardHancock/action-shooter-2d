@@ -16,9 +16,6 @@
     <Filter Include="Header Files\Dependencies">
       <UniqueIdentifier>{c117acc9-0b80-4f66-837f-281921954177}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\States">
-      <UniqueIdentifier>{3fec53d4-82d2-4753-9b69-c20d5d8f9291}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{6f2f1dde-c171-4960-9ed1-53be819aad62}</UniqueIdentifier>
     </Filter>
@@ -45,6 +42,15 @@
     </Filter>
     <Filter Include="Source Files\Audio">
       <UniqueIdentifier>{a55b474d-0661-46b2-bc2e-28fc9f43c269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Creatures">
+      <UniqueIdentifier>{42f96ca9-44bc-4cb9-8c00-a3938338d3ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Creatures">
+      <UniqueIdentifier>{0cef3f76-cb8d-43a9-8696-1c5171f649d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{3fec53d4-82d2-4753-9b69-c20d5d8f9291}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +110,15 @@
     </ClCompile>
     <ClCompile Include="levelManagement\MapManager.cpp">
       <Filter>Source Files\Level Management</Filter>
+    </ClCompile>
+    <ClCompile Include="entities\creatures\Creature.cpp">
+      <Filter>Source Files\Entities\Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="entities\creatures\CreatureManager.cpp">
+      <Filter>Source Files\Entities\Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="entities\creatures\CreatureType.cpp">
+      <Filter>Source Files\Entities\Creatures</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +190,15 @@
     </ClInclude>
     <ClInclude Include="entities\EntityWithMotion.h">
       <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\creatures\Creature.h">
+      <Filter>Header Files\Entities\Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\creatures\CreatureManager.h">
+      <Filter>Header Files\Entities\Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\creatures\CreatureType.h">
+      <Filter>Header Files\Entities\Creatures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

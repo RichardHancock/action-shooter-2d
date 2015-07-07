@@ -6,6 +6,7 @@
 #include "../levelManagement/Map.h"
 #include "../Platform.h"
 #include "../entities/particles/ParticleSystem.h"
+#include "../entities/creatures/CreatureManager.h"
 
 /**
 @class GameState

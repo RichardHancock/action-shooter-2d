@@ -1,0 +1,17 @@
+res/img/grunt.png
+Grunt
+23
+48
+80 100 300 50 150
+12 24 10
+
+//Comments:
+//filepath
+//Name
+//width per frame
+//height per frame
+//Attributes:
+//weight, speed, maxspeed, strength, maxhealth
+//Animation:
+//Number of frames: Idle, moving, attacking
+//

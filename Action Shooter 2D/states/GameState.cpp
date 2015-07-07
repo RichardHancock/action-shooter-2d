@@ -77,6 +77,9 @@ void GameState::load()
 	particles = new ParticleSystem(Vec2(320, 240), new Texture(platform->getRenderer(), 255, 255, 255),
 		50, Utility::newColour(0,0,0), Utility::newColour(255,255,255));
 	particles->setSpeed(15);
+
+	//Creature loading test
+	CreatureManager* cmtmp = new CreatureManager("res/txt/creatures.txt", platform->getRenderer());
 }
 
 void GameState::unload()

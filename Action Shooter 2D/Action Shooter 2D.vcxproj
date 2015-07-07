@@ -81,6 +81,9 @@
     <ClCompile Include="audio\Audio.cpp" />
     <ClCompile Include="audio\Music.cpp" />
     <ClCompile Include="audio\SFX.cpp" />
+    <ClCompile Include="entities\creatures\Creature.cpp" />
+    <ClCompile Include="entities\creatures\CreatureManager.cpp" />
+    <ClCompile Include="entities\creatures\CreatureType.cpp" />
     <ClCompile Include="entities\Entity.cpp" />
     <ClCompile Include="entities\EntityWithMotion.cpp" />
     <ClCompile Include="entities\particles\Particle.cpp" />
@@ -106,6 +109,9 @@
     <ClInclude Include="dependencies\SDL_image.h" />
     <ClInclude Include="dependencies\SDL_mixer.h" />
     <ClInclude Include="dependencies\SDL_ttf.h" />
+    <ClInclude Include="entities\creatures\Creature.h" />
+    <ClInclude Include="entities\creatures\CreatureManager.h" />
+    <ClInclude Include="entities\creatures\CreatureType.h" />
     <ClInclude Include="entities\Entity.h" />
     <ClInclude Include="entities\EntityWithMotion.h" />
     <ClInclude Include="entities\particles\Particle.h" />
