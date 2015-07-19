@@ -65,7 +65,7 @@ void CreatureManager::loadCreatureData(std::string filePath, SDL_Renderer *rende
 
 				Texture* creatureSpriteSheet = new Texture(spritesheetPath, renderer);
 
-				creatureTypes[ID] = new CreatureType(creatureSpriteSheet, creatureName, creatureDimensions, 
+				creatureTypes[ID] = new CreatureType(creatureSpriteSheet, ID, creatureName, creatureDimensions, 
 					creatureWeight, creatureSpeed, creatureSpeed, creatureStrength, creatureMaxHealth);
 
 
@@ -88,4 +88,10 @@ void CreatureManager::loadCreatureData(std::string filePath, SDL_Renderer *rende
 	}
 
 
+}
+
+
+CreatureType* CreatureManager::getCreatureType(std::string creatureID)
+{
+	return creatureTypes[creatureID];
 }

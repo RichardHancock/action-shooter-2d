@@ -1,22 +1,24 @@
 #include "MapManager.h"
 #include "../Utility.h"
 
-MapManager::MapManager(std::string filePath, TileTypeManager* tileTypeManager)
+MapManager::MapManager(std::string filePath, TileTypeManager* tileTypeManager, CreatureManager* creatureManager)
 {
-	loadMapData(filePath, tileTypeManager);
+	loadMapData(filePath, tileTypeManager, creatureManager);
 }
 
 MapManager::~MapManager()
 {
 }
 
-void MapManager::loadMapData(std::string filePath, TileTypeManager* tileTypeManager)
+void MapManager::loadMapData(std::string filePath, TileTypeManager* tileTypeManager, CreatureManager* creatureManager)
 {
 	//A vector to hold all of the layer IDs.
 	std::vector<std::string> layerIDs;
 
 	//A 3D vector that contains all of the tiles. [Layer ID][Y Index][X Index]
 	std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles;
+	//std::unordered_map<std::string, std::vector<std::vector<Creature*>>> mapCreatures;
+	std::vector<Creature*> mapCreatures;
 
 	Utility::log(Utility::I, "Loading map data : " + filePath);
 
@@ -48,31 +50,59 @@ void MapManager::loadMapData(std::string filePath, TileTypeManager* tileTypeMana
 
 			for (int y = 0; y < mapIndexDimensions.y; y++)
 			{
-				std::vector<Tile*> tiles;
-				mapTiles[layerID].push_back(tiles);
-				for (int x = 0; x < mapIndexDimensions.x; x++)
+				if (layerID == "O" || layerID == "B")
 				{
-					//Get the tile
-					std::string tileID;
-					mapFile >> tileID;
+					std::vector<Tile*> tiles;
+					mapTiles[layerID].push_back(tiles);
 
-					//Get the data to load into the new tile
-					TileType* tileType = tileTypeManager->getTileType(tileID);
-					Vec2 spriteDimensions = tileType->getSpriteDimensions();
-					Vec2 spritePos = tileType->getSpritePos();
-					Texture* tileTexture = tileType->getTexture();
+					for (int x = 0; x < mapIndexDimensions.x; x++)
+					{
+						//Get the tile
+						std::string tileID;
+						mapFile >> tileID;
 
-					//Store tile
-					mapTiles[layerID][y].push_back(
-						new Tile(tileTexture, Vec2((x * tileDimensions.x), (y * tileDimensions.y)), tileDimensions, spritePos, spriteDimensions, tileType)
-						);
+						//Get the data to load into the new tile
+						TileType* tileType = tileTypeManager->getTileType(tileID);
+						Vec2 spriteDimensions = tileType->getSpriteDimensions();
+						Vec2 spritePos = tileType->getSpritePos();
+						Texture* tileTexture = tileType->getTexture();
+
+						//Store tile
+						mapTiles[layerID][y].push_back(
+							new Tile(tileTexture, Vec2((x * tileDimensions.x), (y * tileDimensions.y)), tileDimensions, spritePos, spriteDimensions, tileType)
+							);
+					}
 				}
+				else if (layerID == "C")
+				{
+					//std::vector<Creature*> creatures;
+					//mapCreatures[layerID].push_back(creatures);
+					for (int x = 0; x < mapIndexDimensions.x; x++)
+					{
+						//Get the creature
+						std::string creatureID;
+						mapFile >> creatureID;
+
+						if (creatureID != "XX")
+						{
+							Vec2 pos = Vec2((x * tileDimensions.x), (y * tileDimensions.y));
+
+							CreatureType* creatureType = creatureManager->getCreatureType(creatureID);
+							Vec2 spriteDimensions = creatureType->getSpriteDimensions();
+							Texture* creatureTexture = creatureType->getTexture();
+
+							mapCreatures.push_back(
+								new Creature(creatureTexture, pos, spriteDimensions, creatureType));
+						}
+					}
+				}
+				
 			}
 		}
 		mapFile.close();
 
 		//Store the map
-		maps[mapID] = new Map(mapTiles, layerIDs);
+		maps[mapID] = new Map(mapTiles, mapCreatures, layerIDs);
 
 		Utility::log(Utility::I, "Map data loaded");
 	}

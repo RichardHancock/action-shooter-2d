@@ -70,7 +70,9 @@ void GameState::load()
 {
 	//TMP FOR TESTING
 	TileTypeManager* tmp = new TileTypeManager("res/txt/tiles.txt", platform->getRenderer());
-	MapManager *mapmng = new MapManager("res/txt/map1.txt", tmp);
+	//Creature loading test
+	CreatureManager* cmtmp = new CreatureManager("res/txt/creatures.txt", platform->getRenderer());
+	MapManager *mapmng = new MapManager("res/txt/map1.txt", tmp, cmtmp);
 	currentMap = mapmng->getMap("M01");
 
 	//Temp Particle Test
@@ -78,8 +80,8 @@ void GameState::load()
 		50, Utility::newColour(0,0,0), Utility::newColour(255,255,255));
 	particles->setSpeed(15);
 
-	//Creature loading test
-	CreatureManager* cmtmp = new CreatureManager("res/txt/creatures.txt", platform->getRenderer());
+	
+	
 }
 
 void GameState::unload()

@@ -26,10 +26,9 @@ public:
 	@param texture A pointer to the Texture.
 	@param pos The position of the Creature.
 	@param dimensions The dimensions of the Creature.
-	@param spritePos The position of the sprite in the spritesheet.
 	@param spriteDimensions The dimensions of the sprite in the spritesheet.
 	*/
-	Creature(Texture* texture, Vec2 pos, Vec2 dimensions, Vec2 spritePos, Vec2 spriteDimensions, CreatureType *creatureType);
+	Creature(Texture* texture, Vec2 pos, Vec2 dimensions, Vec2 spriteDimensions, CreatureType *creatureType);
 
 	~Creature();
 
@@ -57,7 +56,11 @@ private:
 	///The velocity of the creature - direction and current speed
 	Vec2 velocity;
 
+	///The state this creature is in
+	int state;
+
 	///The frame of the state this creature is in
 	int frame;
+
 
 };

@@ -21,11 +21,37 @@ public:
 	@param strength The strength of the creature
 	@param maxHealth The number of hitpoints this creature starts off with
 	*/
-	CreatureType(Texture* spritesheet, std::string creatureName, Vec2 spriteDimensions, 
+	CreatureType(Texture* spritesheet, std::string ID, std::string creatureName, Vec2 spriteDimensions,
 		float weight, float speed, float maxSpeed, float strength, float maxHealth);
 	~CreatureType();
 
-	void render(SDL_Renderer *renderer, Vec2 pos, int state, int frame);
+	/**
+	@brief Render the Creature.
+	@param renderer A pointer to the renderer.
+	@param pos The position on the screen for the sprite.
+	@param dimensions The dimensions on the screen for the sprite.
+	@param state The state this creature is in
+	@param frame The frame of the state this creature is in
+	*/
+	void render(SDL_Renderer *renderer, Vec2 pos, Vec2 dimensions, int state, int frame);
+
+	/**
+	@brief Gets a pointer to the TileType Texture.
+	@return A pointer to the Texture.
+	*/
+	Texture* getTexture();
+
+	/**
+	@brief Gets the TileType ID.
+	@return The TileType ID.
+	*/
+	std::string getID();
+
+	/**
+	@brief Gets the sprites dimension in the spritesheet.
+	@return The sprites dimensions.
+	*/
+	Vec2 getSpriteDimensions();
 
 	/**
 	@brief Gets the weight of the creature
@@ -60,6 +86,9 @@ public:
 private:
 	///A pointer to the spritesheet.
 	Texture* spritesheet;
+
+	///The ID of the TileType.
+	std::string ID;
 
 	///The dimensions of the sprite.
 	Vec2 spriteDimensions;

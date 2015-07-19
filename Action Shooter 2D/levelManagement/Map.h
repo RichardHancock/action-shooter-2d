@@ -2,6 +2,7 @@
 
 #include "../entities/Entity.h"
 #include "Tile.h"
+#include "../entities/creatures/Creature.h"
 #include <Vector>
 
 /**
@@ -15,7 +16,7 @@ public:
 	@param mapTiles The Tiles in the Map.
 	@param layerIDs The list of the layer ID's.
 	*/
-	Map(std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles, std::vector<std::string> layerIDs);
+	Map(std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles, std::vector<Creature*> mapCreatures, std::vector<std::string> layerIDs);
 
 	/**
 	@brief Map destructor.
@@ -39,4 +40,10 @@ private:
 	std::vector<std::string> layerIDs;
 	///A 3D vector that contains all of the tiles. [Layer ID][Y Index][X Index]
 	std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles;
+
+	//An unordered map that contains all of the creatures. [Layer ID][Y Index][X Index]
+	//std::unordered_map<std::string, Creature*> mapCreatures;
+
+	///A vector of all creatures
+	std::vector<Creature*> mapCreatures;
 };

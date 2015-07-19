@@ -1,6 +1,6 @@
 #include "Map.h"
 
-Map::Map(std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles, std::vector<std::string> layerIDs) : mapTiles(mapTiles), layerIDs(layerIDs)
+Map::Map(std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles, std::vector<Creature*> mapCreatures, std::vector<std::string> layerIDs) : mapTiles(mapTiles), mapCreatures(mapCreatures), layerIDs(layerIDs)
 {
 }
 
@@ -25,5 +25,10 @@ void Map::render(SDL_Renderer* renderer)
 				mapTiles[layerIDs[i]][y][x]->render(renderer);
 			}
 		}
+	}
+
+	for (unsigned int i = 0; i < mapCreatures.size(); i++)
+	{
+		mapCreatures[i]->render(renderer);
 	}
 }
