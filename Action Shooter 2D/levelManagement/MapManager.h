@@ -20,6 +20,7 @@ public:
 	@brief Creates the MapManager to load in the Map files
 	@param filePath The path to the file which holds the initial map data.
 	@param tileTypeManager* A pointer to the TileTypeManager.
+	@param creatureManager A pointer to the CreatureManager
 	*/
 	MapManager(std::string filePath, TileTypeManager* tileTypeManager, CreatureManager* creatureManager);
 
