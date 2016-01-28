@@ -1,0 +1,6 @@
+1
+P0 res/txt/creatures/characters/redford.txt
+
+//No. of characters
+//Character ID
+//Filenames

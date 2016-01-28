@@ -8,6 +8,8 @@
 #include "../entities/particles/ParticleSystem.h"
 #include "../entities/creatures/CreatureManager.h"
 
+//#include "..entities/creatures/Character.h"
+
 /**
 @class GameState
 @brief A game state that contains the game itself
@@ -61,5 +63,10 @@ protected:
 	//TMP FOR TESTING
 	Map *currentMap;
 
+	CharacterType *playerType;
+
 	ParticleSystem* particles;
+
+
+	bool kUp = false, kDown = false, kLeft = false, kRight = false;
 };

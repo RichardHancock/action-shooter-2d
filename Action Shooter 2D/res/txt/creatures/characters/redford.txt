@@ -1,0 +1,5 @@
+res/img/redford.png
+Redford
+15
+15
+1 3 5 9 11

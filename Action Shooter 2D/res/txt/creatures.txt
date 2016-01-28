@@ -1,5 +1,5 @@
 1
-A0 res/txt/creatures/grunt.txt
+A0 res/txt/creatures/enemies/grunt.txt
 
 
 //No. of creatures

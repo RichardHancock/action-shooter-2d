@@ -1,12 +1,13 @@
 res/img/grunt.png
 Grunt
-23
-48
+13
+19
 80 100 300 50 150
 12 24 10
 
 //Comments:
 //filepath
+//ID
 //Name
 //width per frame
 //height per frame

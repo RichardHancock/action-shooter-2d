@@ -1,5 +1,7 @@
 #include "CreatureType.h"
 
+#include "../../Utility.h"
+
 CreatureType::CreatureType(Texture* spritesheet, std::string ID, std::string creatureName, Vec2 spriteDimensions,
 	float weight, float speed, float maxSpeed, float strength, float maxHealth) :
 	spritesheet(spritesheet), ID(ID), creatureName(creatureName), spriteDimensions(spriteDimensions),
@@ -14,7 +16,7 @@ CreatureType::~CreatureType()
 
 void CreatureType::render(SDL_Renderer *renderer, Vec2 pos, Vec2 dimensions, int state, int frame)
 {
-	spritesheet->pushSpriteToScreen(renderer, pos, dimensions, Vec2(state, frame), spriteDimensions);
+	spritesheet->pushSpriteToScreen(renderer, pos, dimensions, Vec2(frame * spriteDimensions.x, state * spriteDimensions.y), spriteDimensions);
 }
 
 Texture* CreatureType::getTexture()

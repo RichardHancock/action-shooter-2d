@@ -2,20 +2,17 @@
 
 Creature::Creature(Texture* texture, Vec2 pos, CreatureType *creatureType) : Entity(texture, pos), creatureType(creatureType)
 {
-	frame = 0;
-	state = 0;
+	
 }
 
 Creature::Creature(Texture* texture, Vec2 pos, Vec2 dimensions, CreatureType *creatureType) : Entity(texture, pos, dimensions), creatureType(creatureType)
 {
-	frame = 0;
-	state = 0;
+	
 }	
 
 Creature::Creature(Texture* texture, Vec2 pos, Vec2 dimensions, Vec2 spriteDimensions, CreatureType *creatureType) : Entity(texture, pos, dimensions, Vec2(0, 0), spriteDimensions), creatureType(creatureType)
 {
-	frame = 0;
-	state = 0;
+	
 }
 
 Creature::~Creature()

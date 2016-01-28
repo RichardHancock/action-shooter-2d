@@ -2,6 +2,7 @@
 
 #include "../../Vec2.h"
 #include "../../Texture.h"
+#include "../../Utility.h"
 
 /**
 @brief Creates a CreatureType object
@@ -83,14 +84,14 @@ public:
 	*/
 	float getMaxHealth();
 
-private:
+protected:
 	///A pointer to the spritesheet.
 	Texture* spritesheet;
 
 	///The ID of the TileType.
 	std::string ID;
 
-	///The dimensions of the sprite.
+	///The dimensions of the sprite in the file.
 	Vec2 spriteDimensions;
 
 	///The name of the creature

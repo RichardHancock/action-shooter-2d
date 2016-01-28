@@ -2,8 +2,10 @@
 
 #include "../entities/Entity.h"
 #include "Tile.h"
+#include "../entities/creatures/Character.h"
 #include "../entities/creatures/Creature.h"
 #include <Vector>
+
 
 /**
 @brief Contains all the data and functions dealing with the Map objects.
@@ -16,7 +18,7 @@ public:
 	@param mapTiles The Tiles in the Map.
 	@param layerIDs The list of the layer ID's.
 	*/
-	Map(std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles, std::vector<Creature*> mapCreatures, std::vector<std::string> layerIDs);
+	Map(std::unordered_map<std::string, std::vector<std::vector<Tile*>>> mapTiles, std::vector<Creature*> mapCreatures, std::vector<std::string> layerIDs, Vec2 spawnPoint);
 
 	/**
 	@brief Map destructor.
@@ -35,6 +37,11 @@ public:
 	*/
 	void render(SDL_Renderer* renderer);
 
+
+	void loadPlayer(CharacterType *pt);
+
+	Character *player;
+
 private:
 	///A vector to hold all of the layer IDs.
 	std::vector<std::string> layerIDs;
@@ -46,4 +53,14 @@ private:
 
 	///A vector of all creatures
 	std::vector<Creature*> mapCreatures;
+
+	///A 2D vector storing the spawn point of the player
+	Vec2 spawnPoint;
+
+	
+
+
+	bool playerLoaded = false;
+
+
 };

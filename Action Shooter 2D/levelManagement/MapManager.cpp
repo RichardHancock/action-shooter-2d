@@ -99,10 +99,24 @@ void MapManager::loadMapData(std::string filePath, TileTypeManager* tileTypeMana
 				
 			}
 		}
+
+		std::string p;
+		Vec2 playerCoords;
+		mapFile >> p;
+
+		if (p == "P")
+		{
+			mapFile >> playerCoords.x;
+			mapFile >> playerCoords.y;
+			Utility::log(Utility::I, "Player spawn coordinates: X: " + Utility::floatToString(playerCoords.x) + " Y: " + Utility::floatToString(playerCoords.y));
+		}
+		else {
+			Utility::log(Utility::E,"Shit, we're corrupt");
+		}
 		mapFile.close();
 
 		//Store the map
-		maps[mapID] = new Map(mapTiles, mapCreatures, layerIDs);
+		maps[mapID] = new Map(mapTiles, mapCreatures, layerIDs, playerCoords);
 
 		Utility::log(Utility::I, "Map data loaded");
 	}

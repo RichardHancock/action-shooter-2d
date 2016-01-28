@@ -93,7 +93,14 @@ public:
 	Vec2 normalize()
 	{
 		float length = getLength();
-		return Vec2(x / length, y / length);
+		//check to see it's not 0
+		if (length > 0 || length < 0)
+		{
+			return Vec2(x / length, y / length);
+		}
+		else {
+			return Vec2(0);
+		}
 	}
 
 

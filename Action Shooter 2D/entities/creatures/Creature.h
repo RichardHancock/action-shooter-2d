@@ -6,6 +6,7 @@
 class Creature : public Entity
 {
 public:
+
 	/**
 	@brief Create the Creature using the size of the Texture as the size of the Creature.
 	@param texture A pointer to the Texture.
@@ -49,18 +50,5 @@ public:
 private:
 	///Reference to CreatureType
 	CreatureType *creatureType;
-
-	///The state of the creature - idle, attacking etc
-	int creatureState;
-
-	///The velocity of the creature - direction and current speed
-	Vec2 velocity;
-
-	///The state this creature is in
-	int state;
-
-	///The frame of the state this creature is in
-	int frame;
-
 
 };

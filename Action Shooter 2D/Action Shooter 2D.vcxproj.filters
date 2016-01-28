@@ -120,6 +120,27 @@
     <ClCompile Include="entities\creatures\CreatureType.cpp">
       <Filter>Source Files\Entities\Creatures</Filter>
     </ClCompile>
+    <ClCompile Include="entities\creatures\Grunt.cpp">
+      <Filter>Source Files\Entities\Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="entities\Object.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="entities\creatures\Character.cpp">
+      <Filter>Source Files\Entities\Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="entities\creatures\CharacterManager.cpp">
+      <Filter>Source Files\Entities\Creatures</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="entities\creatures\CharacterType.cpp">
+      <Filter>Source Files\Entities\Creatures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Platform.h">
@@ -198,6 +219,27 @@
       <Filter>Header Files\Entities\Creatures</Filter>
     </ClInclude>
     <ClInclude Include="entities\creatures\CreatureType.h">
+      <Filter>Header Files\Entities\Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\creatures\Grunt.h">
+      <Filter>Header Files\Entities\Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\Object.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\creatures\Character.h">
+      <Filter>Header Files\Entities\Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\creatures\CharacterManager.h">
+      <Filter>Header Files\Entities\Creatures</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="entities\creatures\CharacterType.h">
       <Filter>Header Files\Entities\Creatures</Filter>
     </ClInclude>
   </ItemGroup>

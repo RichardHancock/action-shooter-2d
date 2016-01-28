@@ -46,6 +46,9 @@ int main(int argc, char *argv[])
 		float dt = (float)(current - lastTime) / 1000.0f;
 		lastTime = current;
 
+		float a = 1 / dt;
+		Utility::log(Utility::I, Utility::floatToString(a));
+
 		manager->update(dt);
 
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -55,6 +58,7 @@ int main(int argc, char *argv[])
 
 		SDL_RenderPresent(renderer);
 
+		
 		if (dt < (1.0f / 50.0f))
 		{
 			SDL_Delay((unsigned int)(((1.0f / 50.0f) - dt)*1000.0f));

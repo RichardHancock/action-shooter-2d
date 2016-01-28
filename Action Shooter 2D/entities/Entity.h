@@ -84,4 +84,22 @@ protected:
 	Vec2 spritePos;
 	///The dimensions of the sprite in the spritesheet.
 	Vec2 spriteDimensions;
+
+	///The frame of the state this entity is in
+	int frame = 0;
+
+	///The state of the entity - idle, attacking, wandering, hiding etc
+	int state = 0;
+
+	///The current action of the entity - walking, stopped
+	int action = 0;
+
+	///The velocity of the entity - direction and current speed
+	Vec2 velocity = Vec2(0,0);
+
+
+
+
+	
+
 };
